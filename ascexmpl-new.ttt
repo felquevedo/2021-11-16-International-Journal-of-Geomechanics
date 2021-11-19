@@ -1,0 +1,48 @@
+\begin{table}
+\caption{Geometric parameters of the mesh}
+\label{parametros_AXI}
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{c c c c}
+\hline
+\multicolumn{1}{c}{\textbf{PARAMETERS}} &
+\multicolumn{1}{c}{\textbf{SYMBOL}} &
+\multicolumn{1}{c}{\textbf{UNIT}} &
+\multicolumn{1}{c}{\textbf{VALUES}} \\
+\hline
+\multicolumn{4}{c}{GEOMETRIC DOMAIN} \\
+\hline
+Radius of interface between tunnel and rockmass & $R_i$ & m & 1 \\ 
+Lining thickness & $e_{rev}$ & m & 0,1 \\
+Radius of the region near the tunnel $R_1$ & $R_1$ & m & 10$R_{i}$ \\
+Total domain lenght & $L_{x}$ & m & $20R_i$ \\ 
+Length beyond $R_1$ & $L_{x_1}$ & m & $L_x - R_1$ \\ 
+\hline
+\multicolumn{4}{c}{ESCAVATION AND PLACEMENT OF LINING} \\
+\hline
+Number of excavation steps & $n_p$ & un & 38 \\
+Numeber of steps in first excavation & $n_{p_i}$ & un & 3 \\
+Length of the excavated part & $Ly_{1}$ & m & $n_pL_p$ \\
+Length of unexcavated part & $Ly_{2}$ & m & $25L_p$ \\
+Longitudinal length of domain & $L_y$ & m & $L_{y_1}+L_{y_2}$ \\
+Excavation step size & $L_{p}$ & m & $1/3R_{i}$ \\
+Unsupported dimension & $d_0$ & m & $0,~2L_{p},~4L_{p}$ \\
+Lining face coordinate & $y_r$ & m & $(i_p-1)L_p + n_{p_i}L_p - (L_p+d_0)$ \\
+Excavation face coordinate & $y_f$ & m & $(i_p-1)L_p + n_{p_i}L_p$ \\
+\hline
+\multicolumn{4}{c}{DISCRETIZATION} \\
+\hline
+Elements along $R_i$ & $nR_{i}$ & un & 5 \\ 
+Elements in lining thickness & $n_{rev}$ & un & 2 \\ 
+Elements along $R_1$ & $nR_{1}$ & un & 15 \\ 
+First and last element ration of $R_1$ & $mR_{1}$ & adm & 15 \\ 
+Elements along $L_{x_1}$ & $nL_{x_1}$ & un & 5 \\
+First and last element ration of $L_{x_1}$ & $mL_{x_1}$ & adm & 5 \\ 
+Element size in excavated part & $L_{p_e}$ & m & $L_{p}$ \\ 
+NNumber of elements along $L_{y_2}$ & $nL_{y_2}$ & un & 8 \\ 
+First and last element ratio of $L_{y_2}$ & $mL_{y_2}$ & adm & 5 \\ 
+\hline
+\end{tabular}
+\normalsize
+\end{table}

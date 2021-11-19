@@ -1,0 +1,80 @@
+\begin{figure}
+\centering
+\includegraphics[scale=1]{PA-domain.pdf}
+\caption{Domain plasticly admissible $\Gamma$ in the principal stress space.}
+\label{fig-PA-domain}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale=1]{reological_scheme.pdf}
+\caption{Rheological representation of the elastoplastic-viscoplastic model.}
+\label{reological_scheme}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale=1]{surfaces_epvp.pdf}
+\caption{Domains and surfaces of the elastoplastic-viscoplastic model.}
+\label{surfaces_epvp}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale=1]{ep-algorithm-representation.pdf}
+\caption{Illustration of the mapped return semi-implicit with $k$ Newton-Raphson local iterations}
+\label{ep-algorithm-representation}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale=1]{integração EP semi-implicito.pdf}
+\caption{Integration algorithm for elastoplasticity using a semi-implicit Euler scheme (omitting the index $n+1$)}
+\label{integração EP semi-implicito}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale = 1.0]{integração VP semi-implicito.pdf}
+\caption{\label{integração VP semi-implicito}Integration algorithm for viscoplasticity using a semi-implicit Euler scheme without hardening-softening (omitting the index $n+1$).}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale = 1.0]{integração EPVP.pdf}
+\caption{\label{integração EPVP}Integration algorithm for elastoplasticity-viscoplasticity (omitting the index $n+1$).}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale = 1.0]{malhaAXI.pdf}
+\caption{\label{malhaAXI}Domain, parameters, boundary conditions and the mesh of the axisymmetric numerical model.}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale = 1.0]{convergence_profile_piepi.pdf}
+\caption{\label{convergence_profile_piepi}Verification with Piepi (1995) analytical solution of the model elastoplastic-viscoplastic without lining.}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale = 1.0]{convergence_profile_piepi_with_lining.pdf}
+\caption{\label{convergence_profile_piepi_with_lining}Verification with Piepi (1995) numerical solution of the model elastoplastic-viscoplastic with lining.}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
+\includegraphics[scale = 1.0]{convergence_lining_module.pdf}
+\caption{\label{convergence_lining_module}Long-term convergence versus lining modulus of elasticity for an unsuported distance $d0=0$ and $d0=4L_p$.}
+\end{figure}

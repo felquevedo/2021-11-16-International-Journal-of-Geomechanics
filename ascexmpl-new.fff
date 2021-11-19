@@ -1,13 +1,5 @@
 \begin{figure}
 \centering
-\includegraphics[scale=1]{PA-domain.pdf}
-\caption{Domain plasticly admissible $\Gamma$ in the principal stress space.}
-\label{fig-PA-domain}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}
-\centering
 \includegraphics[scale=1]{reological_scheme.pdf}
 \caption{Rheological representation of the elastoplastic-viscoplastic model.}
 \label{reological_scheme}
@@ -16,32 +8,9 @@
  
 \begin{figure}
 \centering
-\includegraphics[scale=1]{surfaces_epvp.pdf}
-\caption{Domains and surfaces of the elastoplastic-viscoplastic model.}
-\label{surfaces_epvp}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}
-\centering
 \includegraphics[scale=1]{ep-algorithm-representation.pdf}
-\caption{Illustration of the mapped return semi-implicit with $k$ Newton-Raphson local iterations}
+\caption{Illustration of the return mapping semi-implicit algorithm with $k$ Newton-Raphson local iterations}
 \label{ep-algorithm-representation}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}
-\centering
-\includegraphics[scale=1]{integração EP semi-implicito.pdf}
-\caption{Integration algorithm for elastoplasticity using a semi-implicit Euler scheme (omitting the index $n+1$)}
-\label{integração EP semi-implicito}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}
-\centering
-\includegraphics[scale = 1.0]{integração VP semi-implicito.pdf}
-\caption{\label{integração VP semi-implicito}Integration algorithm for viscoplasticity using a semi-implicit Euler scheme without hardening-softening (omitting the index $n+1$).}
 \end{figure}
 \efloatseparator
  

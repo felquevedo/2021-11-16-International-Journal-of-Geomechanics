@@ -45,5 +45,5 @@
 \begin{figure}
 \centering
 \includegraphics[scale = 1.0]{convergence_lining_module.pdf}
-\caption{\label{convergence_lining_module}Long-term convergence versus lining modulus of elasticity for an unsuported distance $d0=0$ and $d0=4L_p$.}
+\caption{\label{convergence_lining_module}Long-term convergence versus lining modulus of elasticity for an unsupported distance $d0=0$ and $d0=4L_p$.}
 \end{figure}

@@ -1465,6 +1465,60 @@
          height="302"
          id="rect1236-1" />
     </clipPath>
+    <clipPath
+       id="clip44-7-2">
+      <rect
+         x="625"
+         y="861"
+         width="523"
+         height="302"
+         id="rect1188-4" />
+    </clipPath>
+    <clipPath
+       id="clip45-0-6">
+      <rect
+         x="625"
+         y="861"
+         width="523"
+         height="302"
+         id="rect1191-9" />
+    </clipPath>
+    <clipPath
+       id="clip46-9-7">
+      <rect
+         x="625"
+         y="861"
+         width="523"
+         height="302"
+         id="rect1194-0" />
+    </clipPath>
+    <clipPath
+       id="clip47-9-3">
+      <rect
+         x="625"
+         y="861"
+         width="523"
+         height="302"
+         id="rect1197-0" />
+    </clipPath>
+    <clipPath
+       id="clip48-2-3">
+      <rect
+         x="625"
+         y="861"
+         width="523"
+         height="302"
+         id="rect1200-1" />
+    </clipPath>
+    <clipPath
+       id="clip49-0-0">
+      <rect
+         x="625"
+         y="861"
+         width="523"
+         height="302"
+         id="rect1203-0" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -1474,10 +1528,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.3421804"
-     inkscape:cx="235.32834"
+     inkscape:cx="340.76075"
      inkscape:cy="296.52758"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g1627"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
@@ -2067,63 +2121,70 @@
       </g>
       <g
          clip-path="url(#clip44-7)"
-         id="g1478">
+         id="g1478"
+         transform="translate(4,-2)">
         <text
            font-family="Calibri, Calibri_MSFontService, sans-serif"
            font-weight="400"
            font-size="13px"
            transform="translate(740.406,1124)"
-           id="text1476">5000</text>
+           id="text1476"
+           style="letter-spacing:0px">604</text>
       </g>
       <g
          clip-path="url(#clip45-0)"
-         id="g1482">
+         id="g1482"
+         transform="translate(4,-2)">
         <text
            font-family="Calibri, Calibri_MSFontService, sans-serif"
            font-weight="400"
            font-size="13px"
            transform="translate(793.585,1124)"
-           id="text1480">10000</text>
+           id="text1480">1208</text>
       </g>
       <g
          clip-path="url(#clip46-9)"
-         id="g1486">
+         id="g1486"
+         transform="translate(4,-2)">
         <text
            font-family="Calibri, Calibri_MSFontService, sans-serif"
            font-weight="400"
            font-size="13px"
            transform="translate(850.144,1124)"
-           id="text1484">15000</text>
+           id="text1484">1812</text>
       </g>
       <g
          clip-path="url(#clip47-9)"
-         id="g1490">
+         id="g1490"
+         transform="translate(4,-2)">
         <text
            font-family="Calibri, Calibri_MSFontService, sans-serif"
            font-weight="400"
            font-size="13px"
            transform="translate(906.703,1124)"
-           id="text1488">20000</text>
+           id="text1488">2416</text>
       </g>
       <g
          clip-path="url(#clip48-2)"
-         id="g1494">
+         id="g1494"
+         transform="translate(4,-2)">
         <text
            font-family="Calibri, Calibri_MSFontService, sans-serif"
            font-weight="400"
            font-size="13px"
            transform="translate(963.261,1124)"
-           id="text1492">25000</text>
+           id="text1492">3020</text>
       </g>
       <g
          clip-path="url(#clip49-0)"
-         id="g1498">
+         id="g1498"
+         transform="translate(4,-2)">
         <text
            font-family="Calibri, Calibri_MSFontService, sans-serif"
            font-weight="400"
            font-size="13px"
            transform="translate(1019.82,1124)"
-           id="text1496">30000</text>
+           id="text1496">3624</text>
       </g>
       <g
          clip-path="url(#clip58)"
@@ -2134,7 +2195,7 @@
            font-weight="400"
            font-size="13px"
            transform="translate(835.757,1143)"
-           id="text1532">Erev</text>
+           id="text1532">Krev</text>
       </g>
       <g
          clip-path="url(#clip59)"
@@ -3040,66 +3101,6 @@
            id="text1485">2.50</text>
       </g>
       <g
-         clip-path="url(#clip44-8)"
-         id="g1491">
-        <text
-           font-family="Calibri, Calibri_MSFontService, sans-serif"
-           font-weight="400"
-           font-size="13px"
-           transform="translate(235.468,1136)"
-           id="text1489">5000</text>
-      </g>
-      <g
-         clip-path="url(#clip45-8)"
-         id="g1495">
-        <text
-           font-family="Calibri, Calibri_MSFontService, sans-serif"
-           font-weight="400"
-           font-size="13px"
-           transform="translate(289.353,1136)"
-           id="text1493">10000</text>
-      </g>
-      <g
-         clip-path="url(#clip46-9-6)"
-         id="g1499">
-        <text
-           font-family="Calibri, Calibri_MSFontService, sans-serif"
-           font-weight="400"
-           font-size="13px"
-           transform="translate(346.618,1136)"
-           id="text1497">15000</text>
-      </g>
-      <g
-         clip-path="url(#clip47-5)"
-         id="g1503">
-        <text
-           font-family="Calibri, Calibri_MSFontService, sans-serif"
-           font-weight="400"
-           font-size="13px"
-           transform="translate(403.882,1136)"
-           id="text1501">20000</text>
-      </g>
-      <g
-         clip-path="url(#clip48-0)"
-         id="g1507">
-        <text
-           font-family="Calibri, Calibri_MSFontService, sans-serif"
-           font-weight="400"
-           font-size="13px"
-           transform="translate(461.147,1136)"
-           id="text1505">25000</text>
-      </g>
-      <g
-         clip-path="url(#clip49-4)"
-         id="g1511">
-        <text
-           font-family="Calibri, Calibri_MSFontService, sans-serif"
-           font-weight="400"
-           font-size="13px"
-           transform="translate(518.412,1136)"
-           id="text1509">30000</text>
-      </g>
-      <g
          clip-path="url(#clip60-9)"
          id="g1555">
         <text
@@ -3108,7 +3109,7 @@
            font-weight="400"
            font-size="13px"
            transform="translate(332.231,1155)"
-           id="text1553">Erev</text>
+           id="text1553">Krev</text>
       </g>
       <g
          clip-path="url(#clip61-0)"
@@ -3439,6 +3440,73 @@
            x="-972.6355"
            y="148.70641"
            style="stroke-width:0.999999">(%)</tspan></text>
+      <g
+         clip-path="url(#clip44-7-2)"
+         id="g1478-9"
+         transform="matrix(1.0086125,0,0,0.9983498,-508.36993,12.422483)">
+        <text
+           font-family="Calibri, Calibri_MSFontService, sans-serif"
+           font-weight="400"
+           font-size="13px"
+           transform="translate(740.406,1124)"
+           id="text1476-5"
+           style="letter-spacing:0px">604</text>
+      </g>
+      <g
+         clip-path="url(#clip45-0-6)"
+         id="g1482-0"
+         transform="matrix(1.0086125,0,0,0.9983498,-508.36993,12.422483)">
+        <text
+           font-family="Calibri, Calibri_MSFontService, sans-serif"
+           font-weight="400"
+           font-size="13px"
+           transform="translate(793.585,1124)"
+           id="text1480-6">1208</text>
+      </g>
+      <g
+         clip-path="url(#clip46-9-7)"
+         id="g1486-9"
+         transform="matrix(1.0086125,0,0,0.9983498,-508.36993,12.422483)">
+        <text
+           font-family="Calibri, Calibri_MSFontService, sans-serif"
+           font-weight="400"
+           font-size="13px"
+           transform="translate(850.144,1124)"
+           id="text1484-6">1812</text>
+      </g>
+      <g
+         clip-path="url(#clip47-9-3)"
+         id="g1490-3"
+         transform="matrix(1.0086125,0,0,0.9983498,-508.36993,12.422483)">
+        <text
+           font-family="Calibri, Calibri_MSFontService, sans-serif"
+           font-weight="400"
+           font-size="13px"
+           transform="translate(906.703,1124)"
+           id="text1488-5">2416</text>
+      </g>
+      <g
+         clip-path="url(#clip48-2-3)"
+         id="g1494-6"
+         transform="matrix(1.0086125,0,0,0.9983498,-508.36993,12.422483)">
+        <text
+           font-family="Calibri, Calibri_MSFontService, sans-serif"
+           font-weight="400"
+           font-size="13px"
+           transform="translate(963.261,1124)"
+           id="text1492-7">3020</text>
+      </g>
+      <g
+         clip-path="url(#clip49-0-0)"
+         id="g1498-5"
+         transform="matrix(1.0086125,0,0,0.9983498,-508.36993,12.422483)">
+        <text
+           font-family="Calibri, Calibri_MSFontService, sans-serif"
+           font-weight="400"
+           font-size="13px"
+           transform="translate(1019.82,1124)"
+           id="text1496-2">3624</text>
+      </g>
     </g>
     <g
        clip-path="url(#clip60-4)"

@@ -13,16 +13,16 @@
 \hline
 \multicolumn{4}{c}{GEOMETRIC DOMAIN} \\
 \hline
-Radius of interface between tunnel and rockmass & $R_i$ & m & 1 \\ 
-Lining thickness & $e_{rev}$ & m & 0,1 \\
+Radius of interface between tunnel and rock mass & $R_i$ & m & 1 \\ 
+Lining thickness & $e_{rev}$ & m & 0.1 \\
 Radius of the region near the tunnel $R_1$ & $R_1$ & m & 10$R_{i}$ \\
 Total domain lenght & $L_{x}$ & m & $20R_i$ \\ 
 Length beyond $R_1$ & $L_{x_1}$ & m & $L_x - R_1$ \\ 
 \hline
-\multicolumn{4}{c}{ESCAVATION AND PLACEMENT OF LINING} \\
+\multicolumn{4}{c}{EXCAVATION AND PLACEMENT OF LINING} \\
 \hline
 Number of excavation steps & $n_p$ & un & 38 \\
-Numeber of steps in first excavation & $n_{p_i}$ & un & 3 \\
+Number of steps in first excavation & $n_{p_i}$ & un & 3 \\
 Length of the excavated part & $Ly_{1}$ & m & $n_pL_p$ \\
 Length of unexcavated part & $Ly_{2}$ & m & $25L_p$ \\
 Longitudinal length of domain & $L_y$ & m & $L_{y_1}+L_{y_2}$ \\
@@ -40,7 +40,7 @@ First and last element ration of $R_1$ & $mR_{1}$ & adm & 15 \\
 Elements along $L_{x_1}$ & $nL_{x_1}$ & un & 5 \\
 First and last element ration of $L_{x_1}$ & $mL_{x_1}$ & adm & 5 \\ 
 Element size in excavated part & $L_{p_e}$ & m & $L_{p}$ \\ 
-NNumber of elements along $L_{y_2}$ & $nL_{y_2}$ & un & 8 \\ 
+Number of elements along $L_{y_2}$ & $nL_{y_2}$ & un & 8 \\ 
 First and last element ratio of $L_{y_2}$ & $mL_{y_2}$ & adm & 5 \\ 
 \hline
 \end{tabular}

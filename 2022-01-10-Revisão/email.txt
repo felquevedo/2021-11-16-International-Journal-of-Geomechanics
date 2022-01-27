@@ -1,0 +1,107 @@
+CC: "Denise Bernaud" denise.bernaud@ufrgs.br, "Samir Maghous" samir.maghous@ufrgs.br
+
+Ref.:  Ms. No. GMENG-7493
+Numerical integration scheme for coupled elastoplastic-viscoplastic constitutive law for tunnels
+Felipe Quevedo; Denise Bernaud; Samir Maghous
+
+Dear fel_quevedo,
+
+Your Technical Paper, listed above, has completed a review for publication in ASCE's International Journal of Geomechanics. The editor has requested that a revised manuscript be prepared based on the reviewers' evaluations (shown at the end of this email) and submitted for re-review by 02-24-2022.
+
+You can view any reviewers' attachments by opening the attachments on this email OR by clicking on this link to see them in the system: View Attachments. Please note, this link will only work one time.
+
+When preparing the revised manuscript in accordance with the reviewers' concerns and suggestions, be sure to address the following additional requirements, if not already completed:
+
+• Please note the byline on your manuscript text doesn’t match the manuscript data entered (add/edit/delete authors step). Please correct this and resubmit.
+• Please upload your revised manuscript file in Microsoft Word or LaTex format. If you using LaTex, you may submit a PDF file for review. Please see our LaTex instructions on the Author main page for more information.
+• Remove the figures from your manuscript text and upload them separately (one figure per file) in TIFF, EPS or PDF format. Also, please make sure to reference the figure number in each file name.
+• Double-spaced list of figure captions. Please provide a double-spaced list of figure captions with your submission. This can be at the end of your manuscript text or uploaded as a separate Word file. Also, please make sure if you have figures labeled as Figure 1a, 1b, etc. that the captions for these parts of the figure are included in your Figure Caption List.
+• Embedded Tables. Please remove tables from within the text of your paper and place them at the end of your manuscript after the references . If you upload them separately, please make sure they are uploaded in Microsoft Word/LaTex format.
+
+Also, please note in order to clarify math for copyeditors, please ensure that you use boldface for matrices, vectors, and tensors; italics for all variables and lowercase Greek letters; and roman for all numerals, uppercase Greek characters, and mathematical operators.
+
+Please submit the revised manuscript and a detailed response to the reviewers' criticisms by logging onto the Editorial Management system at https://www.editorialmanager.com/jrngmeng/ and clicking on the "Submissions Needing Revision" link.
+
+For your convenience, there is a calendar entry item attached that works with electronic calendars in the iCalendar format (e.g. Outlook, iCal, Google).   To use, click to open the attachment, and then save it to your calendar.
+Be advised that the editor may request further revision or decline your revised version if all of the reviewers' comments have not been adequately addressed.
+
+Comments from the Editor and Reviewers can be found below.
+
+We look forward to receiving your revised manuscript.
+
+Sincerely,
+
+Monica Leigh
+Editorial Coordinator
+
+Reviewers' Questions & Answers:
+Reviewer's Responses to Questions
+
+This manuscript was submitted as a Technical Paper. Does the reviewer think this is the appropriate article type? To see descriptions of the article types, Click Here.
+
+Reviewer #1: 
+
+Yes. The author is using the correct article type.
+ 
+
+Reviewer #2: 
+
+Yes. The author is using the correct article type.
+ 
+
+Reviewer #3: 
+
+Yes. The author is using the correct article type.
+ 
+
+ 
+
+Reviewers' comments:
+
+Dear Authors,
+enclosed please find the reviews of your paper. The Reviewers raised several comments, the paper cannot be accepted in the present form. Aspects that need clarification are clearly listed below and in the attachment. Be sure to address these aspects when revising your paper and please include an itemized list of responses to the arguments raised by the Reviewers. When received your paper will be sent for re-review.
+With kind regards
+
+
+Reviewer #1: This is very interesting research work to apply the hyperelasticity to the geo-material. In addition, this is the suitable method to employ this constitutive law to the integral of the implicit method.
+However, it is difficult to understand it. The authors should friendly revise some explanation in each model's part.
+
+Comments
+1. The reviewer does not think that it is necessary to explain according to Hyperelasticity. However, the authors should explain it more concisely so that the reader can understand it. Why did the authors employ Hyperelasticity to the constitutive model of the geo-material. The authors should explain the reason in detail.
+
+2. The potential function of hyperelasticity, ψe, should be described.
+
+3. The authors should declare that the cohesion, c, is a variable when it is employed at the yield function.
+
+4. The authors should show the concrete form of the plastic potential function. In addition, they should explain why they use such a function.
+
+5. There are many variables in the hardening rule, and the authors should explain them such as the magnitude relationship of cp, ci, cr, etc., in detail. In addition, the authors should also explain the difference between zones. It should also show a comparison with the response of the actual material.
+
+6. The reviewer thinks it is better to explain the validity of the constitutive rule by showing some analysis examples (stress-strain relations) such as triaxial tests. At that time, it is better to compare it with the actual experimental data.
+
+7. Equations (2), (3), (4): The parameter, q, in the proposed model may be variable. In essence, it is a model that the cohesion, c, changes due to plastic deformation. However, it is difficult to understand. The authors should describe and explain the yield function and the cohesion in the yield function.
+
+8. Equation (5): The reviewer thinks that it is better to remove equation (5) since it is difficult to understand it.
+
+9. Equation 6: The authors indicated the Load angle, θ. However, it was not employed in the yield function. On the other hand, it was employed in the plastic potential. The authors should explain it.
+
+10. In the geomechanics, the compression is often implicitly positive. At the first appearance, σ, the authors may declare the tension is positive.
+
+11. Equation 10: The formula of the function, g, should be described.
+
+12. Equation 11: g3 should be solved and the formula of dJ3/dσ should be also described.
+
+13. Equation 24: The first term of the left hand side is the strain rate. Therefore, "dot" is necessary.
+
+14. Equation 26: It is normally use to ε = εe+εvp. It is rear to separate between plastic strain, εp, and εvp. The authors should explain how εp and εvp were calculated individually.
+
+
+
+Reviewer #2: The concepts presented in the paper are available in standard texts. May focus on the work done by the Authors using UPF.
+
+
+Reviewer #3: 1- Authors should review the consistency and notation of all equations
+2- The "zones" in equations 13 and 15 are not well explained (Authors could make a graphic showing these different zones)
+3- The literature review should be reduced and more details should be given on the coupling of the constitutive models
+4- The ANSYS APDL script for the FEM model and the USERMAT subroutine in FOTRAN for the rock constituent model should be publicly available datasets. It is recommended to use for example "Datasets related to this article can be found at [INSERT PERMANENT URL(s) TO BE LINKED TO DATASET], hosted at [NAME OF HOSTING REPOSITORY] ([CITATION TO DATASET])".
+

@@ -1,0 +1,4 @@
+
+site: https://www.editorialmanager.com/jrngmeng/default.aspx
+username: fel_quevedo
+senha: Epilef@#123

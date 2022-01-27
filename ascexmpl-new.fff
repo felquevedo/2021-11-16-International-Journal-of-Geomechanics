@@ -1,6 +1,6 @@
 \begin{figure}
 \centering
-\includegraphics[scale=1]{reological_scheme.pdf}
+\includegraphics[scale=1]{FIG1.pdf}
 \caption{Rheological representation of the elastoplastic-viscoplastic model.}
 \label{reological_scheme}
 \end{figure}
@@ -8,7 +8,7 @@
  
 \begin{figure}
 \centering
-\includegraphics[scale=1]{ep-algorithm-representation.pdf}
+\includegraphics[scale=1]{FIG2.pdf}
 \caption{Illustration of the return mapping semi-implicit algorithm with $k$ Newton-Raphson local iterations}
 \label{ep-algorithm-representation}
 \end{figure}
@@ -16,34 +16,34 @@
  
 \begin{figure}
 \centering
-\includegraphics[scale = 1.0]{integração EPVP.pdf}
+\includegraphics[scale = 1.0]{FIG3.pdf}
 \caption{\label{integração EPVP}Integration algorithm for elastoplasticity-viscoplasticity (omitting the index $n+1$).}
 \end{figure}
 \efloatseparator
  
 \begin{figure}
 \centering
-\includegraphics[scale = 1.0]{malhaAXI.pdf}
+\includegraphics[scale = 1.0]{FIG4.pdf}
 \caption{\label{malhaAXI}Domain, parameters, boundary conditions and the mesh of the axisymmetric numerical model.}
 \end{figure}
 \efloatseparator
  
 \begin{figure}
 \centering
-\includegraphics[scale = 1.0]{convergence_profile_piepi.pdf}
+\includegraphics[scale = 1.0]{FIG5.pdf}
 \caption{\label{convergence_profile_piepi}Verification with Piepi (1995) analytical solution of the model elastoplastic-viscoplastic without lining.}
 \end{figure}
 \efloatseparator
  
 \begin{figure}
 \centering
-\includegraphics[scale = 1.0]{convergence_profile_piepi_with_lining.pdf}
+\includegraphics[scale = 1.0]{FIG6.pdf}
 \caption{\label{convergence_profile_piepi_with_lining}Verification with Piepi (1995) numerical solution of the model elastoplastic-viscoplastic with lining.}
 \end{figure}
 \efloatseparator
  
 \begin{figure}
 \centering
-\includegraphics[scale = 1.0]{convergence_lining_module.pdf}
+\includegraphics[scale = 1.0]{FIG7.pdf}
 \caption{\label{convergence_lining_module}Long-term convergence versus lining modulus of elasticity for an unsupported distance $d0=0$ and $d0=4L_p$.}
 \end{figure}

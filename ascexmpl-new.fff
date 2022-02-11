@@ -1,5 +1,13 @@
 \begin{figure}
 \centering
+\includegraphics[scale=1]{FIG1A.pdf}
+\caption{Linear function defined by parts to represent the hardening/softening through the cohesive parameter and model validation through triaxial testing.}
+\label{choesive parameter}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}
+\centering
 \includegraphics[scale=1]{FIG1.pdf}
 \caption{Rheological representation of the elastoplastic-viscoplastic model.}
 \label{reological_scheme}

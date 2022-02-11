@@ -42,6 +42,7 @@
 \newcommand{\Dsdee}{\boldsymbol{D}}
 \newcommand{\Dsdep}{\boldsymbol{D}^{ep}}
 \newcommand{\Dsdev}{\boldsymbol{D}^{vp}}
+\newcommand{\Dsdepev}{\boldsymbol{D}^{epvp}}
 \newcommand{\dstrain}{\boldsymbol{\dot{\varepsilon}}}
 \newcommand{\dstraine}{\boldsymbol{\dot{\varepsilon}}^{e}}
 \newcommand{\dstrainp}{\boldsymbol{\dot{\varepsilon}}^{p}}
@@ -106,34 +107,20 @@ For problems with isothermal evolution, quasi-static in small transformations, t
 
 Considering the hypothesis of small transformations (which includes the hypothesis of small strains) we have that the total strain rate can be decomposed into an elastic and a plastic component:
 \begin{equation} \label{eq_decomposition_plastic}
-    \dstrain=\dstraine + \dstrainp\;.
+    \dstrain=\dstraine + \dstrainp\;,
 \end{equation}
-
-Within the context of deterministic thermodynamic processes, the specific free energy, considering an isothermal evolution, can be decomposed according to:
-\begin{equation} \label{eq_specific_free_energy}
-    \psi(\strain,\strainp,\alpha) = \psi^e(\strain-\strainp)+\psi^p(\alpha) = \psi^e(\strain^e)+\psi^p(\alpha)\;,
-\end{equation}
-where $\alpha$ is the set of internal variables (cohesion, friction angle…) related to the hardening-softening phenomenon. From Eq.~(\ref{eq_specific_free_energy}), the following constitutive relationships are obtained:
-
-\begin{equation} \label{eq_constitutive_relationship_plastic_free_energy}
-    \stress = \dfrac{\partial \psi^e}{\partial \straine}, ~~~ q = \dfrac{\partial \psi^p}{\partial \alpha}\;,
-\end{equation}
-where $q$ is the set of thermodynamic forces associated with internal variables (scalar or tensor). From Eq.~(\ref{eq_decomposition_plastic}) and Eq.~(\ref{eq_constitutive_relationship_plastic_free_energy}) the following constitutive relationship is obtained:
-
+and following constitutive relationship is used:
 \begin{equation} \label{eq_constitutive_relationship_plastic}
     \dstress = \Dsdep : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstraine - \dstrainp)\;,
 \end{equation}
-where $\Dsdee$  and $\Dsdep$ are fourth-order tensors representing the elastic and elastoplastic modulus, respectively.
+where $\stress$ is the stress tensor (positive compression convention), $\Dsdee$  and $\Dsdep$ are fourth-order tensors representing the elastic and elastoplastic modulus, respectively.
 
 \subsection{Flow surface}
 
 A phenomenological characteristic observed in elastoplastic
-materials is the existence of a limit within which the material behaves elastically. In isotropic materials, this domain is delimited by a hypersurface in the space of principal stresses $\partial \Gamma = \left\{ \stress | f(\stress,q) = 0 \right\}$ where $f$ is the flow function. This surface delimits the set of stresses that are elastically admissible (E.A.) and the set of stresses that are plastically admissible (P.A.) as follows:
-\begin{equation} \label{eq_PA_domain}
-    \Gamma = \left\{ \stress | f(\stress,q) < 0 \right\}~\text{(E.A)}, ~~~ \Gamma = \left\{ \stress | f(\stress,q) \leq 0 \right\}~\text{(P.A)}\;.
-\end{equation}
+materials is the existence of a limit within which the material behaves elastically. In isotropic materials, this domain is delimited by a hypersurface in the space of principal stresses $\partial \Gamma = \left\{ \stress |~f = 0 \right\}$ where $f$ is the flow function. This surface delimits the set of stresses that are plastically admissible $\Gamma = \left\{ \stress | ~f \leq 0 \right\}$.
 
-The flow function is commonly described as a function of the stress tensor invariants and the forces $q$ associated with the internal variables related to the hardening-softening phenomenon $f(\stress,q) = f(I_1,J_2,\theta,q)$ with
+The flow function is commonly described as a function of the stress tensor invariants and the forces $q$ associated with the internal variables $\alpha$ related to the hardening-softening phenomenon $f(\stress,q) = f(I_1,J_2,\theta,q)$ with
 \begin{equation} \label{eq_invariants_elements}
 	\begin{array}{lcl}
 		I_1 = \text{tr}(\stress) = \sigma_{11}+\sigma_{22}+\sigma_{33}\\
@@ -148,26 +135,21 @@ In Eq.~(\ref{eq_invariants_elements}), $I_1$ is the first invariant of the stres
 
 \begin{equation}
 	\label{eq:f_Drucker_Prager}
-	f(\stress,q) = f(I_1,J_2,\beta_i) = \beta_1 I_1 +\beta_2 \sqrt{J_2}-\beta_3,
+	f(\stress,q) = f(I_1,J_2,q) = \beta_1 I_1 +\beta_2 \sqrt{J_2}-q(\alpha),
 \end{equation}
-where the $\beta_i$ parameters are related to the $c$ cohesion and the $\phi$ friction angle of the Mohr-Coulomb flow surface. For the case where the surface of Drucker-Prager coincides with the surface of Mohr-Coulomb by the outer edges (DP-I) \cite{bernaud1991}:
-\begin{equation}
-	\label{eq:f_DP_circunscrita_MC}
-	\beta_1 = \dfrac{(k-1)}{3}, ~~~ \beta_2 = \dfrac{(k+2)}{\sqrt{3}}, ~~~
-	\beta_3 = 2\sqrt{k}~c,
-\end{equation}
-where $k = (1+sin{\phi})/(1-sin{\phi})$. For the case where the surface of Drucker-Prager is inscribed on the surface of Mohr-Coulomb (DP-II) \cite{bernaud1991}:
+where the $\beta_1, \beta_2$ and $q(\alpha)$ parameters are related to the friction angle $\phi$ and cohesion $c$, respectively. For the case where the surface of Drucker-Prager is inscribed on the surface of Mohr-Coulomb \cite{bernaud1991}:
 \begin{equation}
 	\label{eq:f_DP_inscrita_MC}
 	\beta_1 = \dfrac{(k-1)}{3}, ~~~ \beta_2 = \dfrac{(2k+1)}{\sqrt{3}}, ~~~
-	\beta_3 = 2\sqrt{k}~c,
+	q(\alpha) = 2\sqrt{k}~c(\alpha),
 \end{equation}
+where $k = (1+sin{\phi})/(1-sin{\phi})$. The Lode angle does not appear because the Drucker-Prager surface does not depend on this angle in the desviator plane.
 
 \subsection{Plastic flow rule}
 
 The law of evolution of plastic deformation (known as plastic flow rule) is postulated as
 \begin{equation} \label{eq_plastic_flow}
-	\strainp = \dot \lambda \dgds ~~~ \text{with} ~~~ \dgds = \dfrac{\partial g}{\partial \stress} \;,
+	\dot \strainp = \dot \lambda \dgds ~~~ \text{with} ~~~ \dgds = \dfrac{\partial g}{\partial \stress} \;,
 \end{equation}
 where $\lambda$ is the plastic multiplier and $\dgds$ is the tensor that gives the direction of plastic flow through the gradient of a potential function $g$ analogous to $f$. Like the flow function, the plastic potential is usually described using the invariants of the stress tensor and $\dgds$ can be determined using the chain rule. For example, if $g(I_1,\sqrt{J_2},J3,q)$ is as in \citeN{viladkar1995}, we have:
 \begin{equation} \label{eq_direction_plastic_flow}
@@ -178,33 +160,28 @@ where $\lambda$ is the plastic multiplier and $\dgds$ is the tensor that gives t
 \end{array}
 \end{equation}
 
-As can be seen in Eq.~(\ref{eq_direction_plastic_flow}), the constants $C_1, C_2$ and $C_3$ are particularities of each type of potential function. In \citeN{viladkar1995} it is possible to obtain the value of these constants for several functions, such von-Mises, Tresca, Drucker-Prager, Mohr-Coulomb, Cap Models, etc. For Drucker-Prager potential flow has $C_1 = \beta_1$, $C_2 = \beta_2$, $C_3 = 0$.
-
-A common aspect in geomechanics is the variation of the volume of the material during the evolution of plastic deformations. This effect is commonly introduced through unassociated plasticity, adopting, instead of the friction angle a dilatance angle $0<\psi<\phi$ in the potencial function $g$.
+As can be seen in Eq.~(\ref{eq_direction_plastic_flow}), the constants $C_1, C_2$ and $C_3$ are particularities of each type of potential function. In \citeN{viladkar1995} it is possible to obtain the value of these constants for several functions, such von-Mises, Tresca, Drucker-Prager, Mohr-Coulomb, Cap Models, etc. For Drucker-Prager potential flow $g = \beta_1 I_1 +\beta_2 \sqrt{J_2}$ has $C_1 = \beta_1$, $C_2 = \beta_2$, $C_3 = 0$. This potential function has a numerical advantage in obtaining the gradient due to its smoothness. Another advantage is that it is able to simulate the volume variation during the evolution of plastic deformations. This effect is commonly introduced through unassociated plasticity, adopting, instead of the friction angle a dilatancy angle $0<\psi<\phi$ in the potencial function $g$.
 
 \subsection{Hardening-Softening law}
 
-The hardening-softening law characterizes the dependence of internal variables during the evolution of plastic deformations. This law is postulated as follows:
+The hardening-softening law characterizes the dependence of internal variables $\alpha$ during the evolution of plastic deformations. This law is postulated as follows:
 
 \begin{equation} \label{eq_hardening_law}
 	\dot q = \dot \lambda \hl(\stress,q) = - \dot \lambda \dfrac{\partial h}{\partial q}\;,
 \end{equation}
-where $\hl = -\partial h / \partial q$ is a gradient of a potential fucntion $h$ with respect to the associated thermodynamic forces $q$. As the flow function $f$ is dependent on $q$, changing along the plastic deformation will change the position and/or shape of the flow surface. When the flow surface is static, that is, $\dot q = 0$, there is perfect plasticity, when increases, there is isotropic hardening-softening and when it moves, there is kinematic hardening-softening, being mixed, when composed of the last two. In this paper, the associated hardening-softening law ($h=f$) and isotropic is considered. The associated thermodynamic force is given exclusively by the portion that does not depend on the hydrostatic ($I_1$) or deviating ($J_2$) part on the flow surfaces. This force is controlled by the cohesive parameter, so $q = \chi c(\strainpeq) = 2\sqrt{k}c(\strainpeq)$, where $\strainpeq$ is the state variable. For cohesion, it is considered a linear function defined by parts, as Eq.~(\ref{eq_cohesive_law}), in order to represent the characteristic hadering-softening of the rock mass.
+where $\hl = -\partial h / \partial q$ is a gradient of a potential fucntion $h$ with respect to the associated thermodynamic forces $q$. As the flow function $f$ is dependent on $q$, changing along the plastic deformation will change the position and/or shape of the flow surface. When the flow surface is static, that is, $\dot q = 0$, there is perfect plasticity, when it increases isotropically, there is isotropic hardening-softening and when it moves, there is kinematic hardening-softening, being mixed, when composed of the last two. In this paper, the isotrpoic associated hardening-softening law ($h=f$) is considered. The associated thermodynamic force is given exclusively by the portion that does not depend on the hydrostatic ($I_1$) or deviating ($J_2$) part on the flow surfaces. This force is controlled by the cohesive parameter, so $q(\alpha) =  2\sqrt{k}c(\alpha)$, where the equivalent plastic deformation is the internal variable, i.e., $\alpha = \strainpeq$. For cohesion, it is considered a linear function defined by parts, as Fig.~\ref{choesive parameter}, in order to represent the characteristic hadering-softening of the rock mass.
 
-\begin{equation} \label{eq_cohesive_law}
-c (\bar \varepsilon^p) = \left\{ 
-\begin{array}{ll} 
-	c_i + \dfrac{(c_p-c_i)}{\bar \varepsilon^p_I}\bar \varepsilon^p &  \text{for zone I} \\ 
-	c_p, & \text{for zone II} \\
-	c_p + \dfrac{(c_r-c_p)}{\bar \varepsilon^p_r-\bar \varepsilon^p_{II}}(\bar \varepsilon^p - \bar \varepsilon^p_{II}), & \text{for zone III} \\	
-	c_r, & \text{for zone IV}
-\end{array}\right..
-\end{equation}
+\begin{figure}
+	\centering
+	\includegraphics[scale=1]{FIG1A.pdf}
+	\caption{Linear function defined by parts to represent the hardening/softening through the cohesive parameter and model validation through triaxial testing.}
+	\label{choesive parameter}
+\end{figure}
 
 Therefore, using the chain rule in Eq.~(\ref{eq_hardening_law}) we have 
 \begin{equation}
 	\label{eq:expressao_amolecimento}
-	\dot q = - \dot \lambda \dfrac{\partial h}{\partial q} = - \dot \lambda \dfrac{\partial f}{\partial q} = \dot \lambda \left(- \dfrac{\partial f}{\partial q}\dfrac{\partial q}{\partial c}\dfrac{\partial c}{\partial \bar \varepsilon^p}\right) = \dot \lambda \left(\chi \dfrac{\partial c}{\partial \bar \varepsilon^p}\right),	
+	\dot q = - \dot \lambda \dfrac{\partial h}{\partial q} = - \dot \lambda \dfrac{\partial f}{\partial q} = \dot \lambda \left(- \dfrac{\partial f}{\partial q}\dfrac{\partial q}{\partial c}\dfrac{\partial c}{\partial \bar \varepsilon^p}\right) = \dot \lambda \left(2\sqrt{k} \dfrac{\partial c}{\partial \bar \varepsilon^p}\right),	
 \end{equation}
 where
 \begin{equation}
@@ -232,7 +209,7 @@ and
 	C = \dfrac{\beta_1+1/\sqrt{3}}{\sqrt{3\beta_1^2+1/2}}.
 \end{equation}
 
-When $\phi = 0$ the rock mass is independent of the hydrostatic pressure $\beta = 0$ and $C = \sqrt{2/3}$.
+When $\phi = 0$ the rock mass is independent of the hydrostatic pressure $\beta_1 = 0$ and $C = \sqrt{2/3}$.
 
 \subsection{Loading and unloading conditions}
 
@@ -299,9 +276,9 @@ Unlike elastoplasticity, viscoplastic deformation occur even when $f^{vp} > 0$, 
 
 \section{Elastoplastic-Viscoplastic constitutive model}
 
-The proposed elastoplastic-viscoplastic model is constructed by the serial association of the constitutive models described above, and, therefore, we have:
+The proposed elastoplastic-viscoplastic model is constructed by the serial association of the constitutive models described above, i.e., $\dstrain = \dstraine + \dstrainp + \dstrainv$, which leads to the following constitutive relationship:
 \begin{equation} \label{eq_constitutive_relationship_epvp}
-	\dstress = \Dsdev : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstraine - \dstrainp - \dstrainv)\;.
+	\dstress = \Dsdepev : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstraine - \dstrainp - \dstrainv)\;.
 \end{equation}
 
 This association can be seen in the one-dimensional representation of Fig.~\ref{reological_scheme}. An important observation is that the flow surfaces and the internal variables that define the elastoplastic and viscoplastic portion of this model can be different from each other, including the association of their respective potential functions with their flow surfaces.
@@ -336,7 +313,7 @@ where $\Delta \lambda = \dot\lambda\Delta t$ and $0 \leq \Theta \leq 1$ provides
 
 The fully explicit schemes did not satisfy the consistency condition $f_{n+1}=f(\stress_{n+1},q_{n+1})=0$ at the end of the substep, since the plastic multiplier and the flow vectors were calculated with the stress of the previous substep $n$. Currently, completely implicit or semi-implicit algorithms that satisfy $f_{n+1} = 0$ are used and some semi-implicit ones avoid the need to calculate the second order gradients of flow vectors $\dgds$ and $\hl$, but need more equilibrium iterations in relation to the fully implicit scheme. Several integration schemes for elastoplasticity can be found in \citeN{souzaneto2008}, \citeN{belytschko2000} and \citeN{simo1998}. In this work, we use semi-implicit two-step integration scheme, presented in \citeN{belytschko2000}, in which the plastic multiplier is integrated through an implicit scheme and the flow vectors are explicitly integrated.
 
-The integration schemes have two steps: first, the elastic predictor is calculated and, if necessary, the plastic corretor. Defining  $\Delta \strainp_{n+1} \equiv \strain_{n+1} - \strain_{n}$, the elastic predictor can be explained from Eq.~(\ref{eq:esquema_int_constitutiva_ep})$_4$ as: 
+The integration schemes have two steps: first, the elastic predictor is calculated and, if necessary, the plastic corretor. Defining  $\Delta \strainp_{n+1} \equiv \strainp_{n+1} - \strainp_{n}$, the elastic predictor can be explained from Eq.~(\ref{eq:esquema_int_constitutiva_ep})$_4$ as: 
 \begin{equation}
 	\label{eq:preditor_elastico}
 	\stress_{n+1} = \Dsdee(\strain_{n+1}-\strain_{n+1}^p) = \Dsdee(\strain_n+\Delta \strain-\strain_{n}^ p-\Delta \strain_{n+1}^p) = \stress_{n+1}^{trial} + \Delta \stress_{n+1}
@@ -568,7 +545,7 @@ The algorithm was implemented in ANSYS software through the UPF (User Programmin
 	\normalsize
 \end{table}
 
-The following constitutive parameters are used: $E=1500$MPa and $2000$MPa, $\nu=0.498$, $c^i=c^p=c^r =4\sqrt{3}/2$MPa, $ c^{vp}=3\sqrt{3}/2$MPa, $\eta = 4 \cdot 10^4$day, $n=1$, $f_0=1$MPa and $p_v=p_h=9$ MPa. The viscous phenomenon evolves over time between excavation steps. This time is calculated as the ration between the step size of the excavation $L_p$ and the excavation speed $V_p = 10$m/day. After the last excavation the model continues incrementing the time until the deformation increment is in the order of $10^{-8}$. In the latter, it can be noted that the elastoplastic model has greater cohesion than the viscoplastic model. This causes viscoplastic deformations to start even before the solid plasticize. The long-term convergence profile, that is, after the time-deferred effects cease, can be seen in Fig.~\ref{convergence_profile_piepi} and Fig.~\ref{convergence_profile_piepi_with_lining}. There is an excellent agreement between the proposed numerical solution with the analytical and numerical solution given by \citeN{piepi1995}.
+The following constitutive parameters are used: $E=1500$MPa and $2000$MPa, $\nu=0.498$, $c^i=c^p=c^r =4\sqrt{3}/2$MPa, $ c^{vp}=3\sqrt{3}/2$MPa, $\eta = 4 \cdot 10^4$day, $n=1$, $f_0=1$MPa and $p_v=p_h=9$ MPa. The viscous phenomenon evolves over time between excavation steps. This time is calculated as the ratio between the step size of the excavation $L_p$ and the excavation speed $V_p = 10$m/day. After the last excavation the model continues incrementing the time until the deformation increment is in the order of $10^{-8}$. In the latter, it can be noted that the elastoplastic model has greater cohesion than the viscoplastic model. This causes viscoplastic deformations to start even before the solid plasticize. The long-term convergence profile, that is, after the time-deferred effects cease, can be seen in Fig.~\ref{convergence_profile_piepi} and Fig.~\ref{convergence_profile_piepi_with_lining}. There is an excellent agreement between the proposed numerical solution with the analytical and numerical solution given by \citeN{piepi1995}.
 
 \begin{figure}
 	\centering

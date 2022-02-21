@@ -58,6 +58,7 @@
 \newcommand{\Kll}{\boldsymbol K}
 \newcommand{\Nll}{\boldsymbol N}
 \newcommand{\onell}{\boldsymbol{1}}
+\newcommand{\onellll}{\boldsymbol{I}}
 \newcommand{\Rl}{\boldsymbol{R}}
 \newcommand{\sll}{\boldsymbol{s}}
 \newcommand{\strain}{\boldsymbol{\varepsilon}}
@@ -87,17 +88,17 @@
 
 % Please include an abstract:
 \begin{abstract}
-The paper presents an efficient numerical integration scheme for coupled elastoplasticity-viscoplastiticy constitutive behavior with internal-state variables standing for irreversible processes. In most quasi-static structural analyses, the solution to boundary value problems involving materials that exhibit time-dependent constitutive behavior proceeds from the equations integration handled at two distinct levels. On the one hand, the first or local level refers to the numerical integration at each Gaussian point of the rate constitutive stress/strain relationships. For a given strain increment, the procedure of local integration is iterated for stresses and associated internal variables until convergence of the algorithm. On the other hand, the second or global level is related to structure equilibrium between internal and external forces achieved by the Newton-Raphson iterative scheme. A review of the elastoplastic and viscoplastic model will be shown, following the coupling between these models. Particular emphasis is given in this contribution to address the first level integration procedure, also referred to as algorithm for stress and internal variable update, considering a general elastoplastic-viscoplastic constitutive behavior. The formulation is described for semi-implicit Euler schemes. The efficacy of the numerical formulation is assessed by comparison with analytical solution and numerical derived for deep tunnel in coupled elastoplasticity-viscoplascitity. Finally, a parametric analysis was performed to show the importance that this model can have, in the long-term convergence profile, against other models.
+The paper presents an efficient numerical integration scheme for coupled elastoplasticity-viscoplastiticy constitutive behavior with internal-state variables standing for irreversible processes. In most quasi-static structural analyses, the solution to boundary value problems involving materials that exhibit time-dependent constitutive behavior proceeds from the equations integration handled at two distinct levels. On the one hand, the first or local level refers to the numerical integration at each Gaussian point of the rate constitutive stress/strain relationships. For a given strain increment, the procedure of local integration is iterated for stresses and associated internal variables until convergence of the algorithm. On the other hand, the second or global level is related to structure equilibrium between internal and external forces achieved by the Newton-Raphson iterative scheme. A review of the elastoplastic and viscoplastic model will be shown, following the coupling between these models. Particular emphasis is given in this contribution to address the first level integration procedure, also referred to as algorithm for stress and internal variable update, considering a general elastoplastic-viscoplastic constitutive behavior. The formulation is described for semi-implicit Euler schemes. The efficacy of the numerical formulation is assessed by comparison with analytical and numerical solutions derived for deep tunnels in coupled elastoplasticity-viscoplascitity.  Finally, a parametric analysis was performed to show the importance that this model can have, in the long-term convergence profile, against other models. For the considered flow surfaces, potential functions and properties, differences order of 23\% to 52\% were found in the long-term convergence.
 \end{abstract}
 
 \section{Introduction}
-Deep tunnels are those whose deformation field, induced by excavation, does not significantly reaches the surface. The field of strain and stresses around the cavity of deep tunnel depends on several interrelated factors, such as the depth of the tunnel, the geometry of the cross section, the anisotropy of stresses in situ, the heterogeneity of the rock mass, the coupling between the rock mass and the lining during the construction of the tunnel and the mechanical behavior of the rock mass and lining. In general, for both the rock mass and the lining, several developments in literature of the rheological models are found whose parameters are adjusted based on samples tests.
+Deep tunnels are those whose deformation field, induced by excavation, does not significantly reaches the surface. The field of strain and stresses around the cavity of deep tunnels depends on several interrelated factors, such as the depth of the tunnel, the geometry of the cross section, the anisotropy of stresses in situ, the heterogeneity of the rock mass, the coupling between the rock mass and the lining during the construction of the tunnel and the mechanical behavior of the rock mass and lining. In general, for both the rock mass and the lining, several developments in literature of the rheological models are found whose parameters are adjusted based on samples tests.
 
-An elastoplastic-viscoplastic constitutive law becomes important when the material behavior can’t be describe by the usual models like elastoplasticity or viscoplastic. This problem is characteristic of deep tunnels excavated in clay rock mass as described by \citeN{Rousset1988}. In these cases plastification around the rock mass, gradual closing of the tunnel section, extrusion of the excavation face and overloading on the lining can develop over the construction time (short term), or even months and years after the construction of the tunnel (long term), which can lead to excessive deformations \cite{barla2008}, entrapment of the machine \cite{ramoni2010} and damage to the lining.
+An elastoplastic-viscoplastic constitutive law becomes important when the material behavior can’t be describe by the usual models like elastoplasticity or viscoplastic. For example, this problem is characteristic of deep tunnels excavated in clay rock mass as described by \citeN{Rousset1988}. In these cases plastification around the rock mass, gradual closing of the tunnel section, extrusion of the excavation face and overloading on the lining can develop over the construction time (short term), or even months and years after the construction of the tunnel (long term), which can lead to excessive deformations \cite{barla2008}, entrapment of the machine \cite{ramoni2010} and damage to the lining.
 In addition to the present work, elastoplastic-viscoplastic models applied to the problem of deep tunnels can be found in: \citeN{Rousset1988}, \citeN{piepi1995}, \citeN{Purwodihardjo2003}, \citeN{kleine2007}, \citeN{shafiqu2008}, \citeN{debernardi2009}, \citeN{souley2011}, \citeN{mahn2015}.
-This work presents a numerical integration scheme for the elastoplastic-viscoplastic constitutive behavior.
+This work presents a numerical integration scheme for the general elastoplastic-viscoplastic constitutive behavior.
 For that, a brief bibliographical review will be made about each model separately and later its coupling.
-Finally, the validation of this model will be presented, comparing its numerical solution with the analytical and numerical solution obtained by \citeN{piepi1995} of an excavated tunnel under axisymmetric conditions.
+The validation of this model will be presented, comparing its numerical solution with the analytical and numerical solutions obtained by \citeN{piepi1995} of an excavated tunnel under axisymmetric conditions. Finally a parametric analysis was performed to show the importance that this model can have, in the long-term convergence profile, against other models.
 
 \section{Elastoplastic constitutive model}
 
@@ -105,20 +106,20 @@ For problems with isothermal evolution, quasi-static in small transformations, t
 
 \subsection{Decomposition of the total strain tensor}
 
-Considering the hypothesis of small transformations (which includes the hypothesis of small strains) we have that the total strain rate can be decomposed into an elastic and a plastic component:
+Considering the hypothesis of small transformations (which includes the hypothesis of small strains) the total strain rate can be decomposed into an elastic and a plastic component:
 \begin{equation} \label{eq_decomposition_plastic}
     \dstrain=\dstraine + \dstrainp\;,
 \end{equation}
 and following constitutive relationship is used:
 \begin{equation} \label{eq_constitutive_relationship_plastic}
-    \dstress = \Dsdep : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstraine - \dstrainp)\;,
+    \dstress = \Dsdep : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstrain - \dstrainp)\;,
 \end{equation}
 where $\stress$ is the stress tensor (positive compression convention), $\Dsdee$  and $\Dsdep$ are fourth-order tensors representing the elastic and elastoplastic modulus, respectively.
 
 \subsection{Flow surface}
 
 A phenomenological characteristic observed in elastoplastic
-materials is the existence of a limit within which the material behaves elastically. In isotropic materials, this domain is delimited by a hypersurface in the space of principal stresses $\partial \Gamma = \left\{ \stress |~f = 0 \right\}$ where $f$ is the flow function. This surface delimits the set of stresses that are plastically admissible $\Gamma = \left\{ \stress | ~f \leq 0 \right\}$.
+materials is the existence of a limit within which the material behaves elastically. In isotropic materials, this domain is delimited by a hypersurface in the space of principal stresses $\partial \Gamma = \left\{ \stress |~f = 0 \right\}$ where $f$ is the flow function. This surface delimits the set of stresses that are elastoplastically admissible $\Gamma = \left\{ \stress | ~f \leq 0 \right\}$.
 
 The flow function is commonly described as a function of the stress tensor invariants and the forces $q$ associated with the internal variables $\alpha$ related to the hardening-softening phenomenon $f(\stress,q) = f(I_1,J_2,\theta,q)$ with
 \begin{equation} \label{eq_invariants_elements}
@@ -131,19 +132,18 @@ The flow function is commonly described as a function of the stress tensor invar
 	\end{array}\;
 \end{equation}
 
-In Eq.~(\ref{eq_invariants_elements}), $I_1$ is the first invariant of the stress tensor, $J_2,J_3$ is the second and the third invariant of the deviator tensor $\sll$, $\theta$ is the Lode's angle \cite{chen1988}. When the flow function does not depend of $I_1$, it is said that the plasticity is independent of pressure, being determined only by the state of stresses along the desviator plane. Several flow functions can be found in the literature as in \citeN{chen1988}, \citeN{souzaneto2008} and \citeN{zienkiewicz1974}. Here is used the Drucker-Prager flow surface where:
-
+In Eq.~(\ref{eq_invariants_elements}), $I_1$ is the first invariant of the stress tensor, $J_2,J_3$ are the second and the third invariant of the deviator tensor $\sll$ and $\theta$ is the Lode's angle \cite{chen1988}. When the flow function does not depend of $I_1$, it is said that the plasticity is independent of pressure, being determined only by the state of stresses along the deviator plane. Several flow functions can be found in the literature as in \citeN{chen1988}, \citeN{souzaneto2008} and \citeN{zienkiewicz1974}. Here is used, for example, the Drucker-Prager flow surface:
 \begin{equation}
 	\label{eq:f_Drucker_Prager}
 	f(\stress,q) = f(I_1,J_2,q) = \beta_1 I_1 +\beta_2 \sqrt{J_2}-q(\alpha),
 \end{equation}
-where the $\beta_1, \beta_2$ and $q(\alpha)$ parameters are related to the friction angle $\phi$ and cohesion $c$, respectively. For the case where the surface of Drucker-Prager is inscribed on the surface of Mohr-Coulomb \cite{bernaud1991}:
+where $\beta_1, \beta_2$ and $q(\alpha)$ are parameters related to the friction angle $\phi$ and cohesion $c$, respectively. The following expressions for the case of Drucker-Prager surface inscribed on the Mohr-Coulomb surface are \cite{bernaud1991}:
 \begin{equation}
 	\label{eq:f_DP_inscrita_MC}
 	\beta_1 = \dfrac{(k-1)}{3}, ~~~ \beta_2 = \dfrac{(2k+1)}{\sqrt{3}}, ~~~
 	q(\alpha) = 2\sqrt{k}~c(\alpha),
 \end{equation}
-where $k = (1+sin{\phi})/(1-sin{\phi})$. The Lode angle does not appear because the Drucker-Prager surface does not depend on this angle in the desviator plane.
+where $k = (1+\sin{\phi})/(1-\sin{\phi})$. The Lode angle does not appear because the Drucker-Prager surface is independent of this angle in the deviator plane.
 
 \subsection{Plastic flow rule}
 
@@ -151,49 +151,46 @@ The law of evolution of plastic deformation (known as plastic flow rule) is post
 \begin{equation} \label{eq_plastic_flow}
 	\dot \strainp = \dot \lambda \dgds ~~~ \text{with} ~~~ \dgds = \dfrac{\partial g}{\partial \stress} \;,
 \end{equation}
-where $\lambda$ is the plastic multiplier and $\dgds$ is the tensor that gives the direction of plastic flow through the gradient of a potential function $g$ analogous to $f$. Like the flow function, the plastic potential is usually described using the invariants of the stress tensor and $\dgds$ can be determined using the chain rule. For example, if $g(I_1,\sqrt{J_2},J3,q)$ is as in \citeN{viladkar1995}, we have:
+where $\lambda$ is the positive plastic multiplier and $\dgds$ is the tensor that gives the direction of plastic flow through the gradient of a potential function $g$ analogous to $f$. Like the flow function, the plastic potential is usually described using the invariants of the stress tensor and $\dgds$ can be determined using the chain rule. For example, if $g(I_1,\sqrt{J_2},J3,q)$ we have:
 \begin{equation} \label{eq_direction_plastic_flow}
 	\begin{array}{lcl}
 	\dgds = C_1\gllum + C_2\glldois + C_3\glltres, \\ 
-	\gllum = \dfrac{\partial I_1}{\partial \stress} = \onell,~~~ \glldois = \dfrac{\partial \sqrt{J_2}}{\partial \stress} = \dfrac{1}{2\sqrt{J_2}}\sll,~~~ \glltres = \dfrac{\partial J_3}{\partial \stress}, \\
-	C_1 = \dfrac{\partial g}{\partial I_1},~~~C_2=\dfrac{\partial g}{\partial \sqrt{J_2}}-\dfrac{\tan{(3\theta)}}{\sqrt{J_2}}\dfrac{\partial g}{\partial \theta},~~~C_3 = -\dfrac{\sqrt{3}}{2\cos{(3\theta})}\dfrac{1}{J_2^{3/2}}\dfrac{\partial g}{\partial \theta} \,.
+	\gllum = \dfrac{\partial I_1}{\partial \stress} = \onell,~~~ \glldois = \dfrac{\partial \sqrt{J_2}}{\partial \stress} = \dfrac{1}{2\sqrt{J_2}}\sll,~~~ \glltres = \dfrac{\partial J_3}{\partial \stress} = \sll^2-\dfrac{2}{3}J_2\onell, \\
+	C_1 = \dfrac{\partial g}{\partial I_1},~~~C_2=\dfrac{\partial g}{\partial \sqrt{J_2}}-\dfrac{\tan{(3\theta)}}{\sqrt{J_2}}\dfrac{\partial g}{\partial \theta},~~~C_3 = -\dfrac{\sqrt{3}}{2\cos{(3\theta})}\dfrac{1}{J_2^{3/2}}\dfrac{\partial g}{\partial \theta} \,
 \end{array}
 \end{equation}
+Expressions for $\gllum$, $\glldois$ and $\glltres$ for given particular stress-strain states (plane strain, axisymmetry or 3D) can be found in \citeN{Owen1980}. As can be seen in Eq.~(\ref{eq_direction_plastic_flow}), the constants $C_1, C_2$ and $C_3$ are particularities of each type of potential function. In \citeN{viladkar1995} it is possible to obtain the value of these constants for several functions, such von-Mises, Tresca, Drucker-Prager, Mohr-Coulomb, Cap Models, etc. For Drucker-Prager potential flow $g = \beta_1 I_1 +\beta_2 \sqrt{J_2}$ has $C_1 = \beta_1$, $C_2 = \beta_2$, $C_3 = 0$. This potential function has a numerical advantage due to its smoothness. Another advantage it can simulate the volume variation during the evolution of plastic deformations. This effect is commonly introduced through unassociated plasticity, adopting, instead of the friction angle a dilatancy angle $0<\psi<\phi$ in the potential function $g$.
 
-As can be seen in Eq.~(\ref{eq_direction_plastic_flow}), the constants $C_1, C_2$ and $C_3$ are particularities of each type of potential function. In \citeN{viladkar1995} it is possible to obtain the value of these constants for several functions, such von-Mises, Tresca, Drucker-Prager, Mohr-Coulomb, Cap Models, etc. For Drucker-Prager potential flow $g = \beta_1 I_1 +\beta_2 \sqrt{J_2}$ has $C_1 = \beta_1$, $C_2 = \beta_2$, $C_3 = 0$. This potential function has a numerical advantage in obtaining the gradient due to its smoothness. Another advantage is that it is able to simulate the volume variation during the evolution of plastic deformations. This effect is commonly introduced through unassociated plasticity, adopting, instead of the friction angle a dilatancy angle $0<\psi<\phi$ in the potencial function $g$.
-
-\subsection{Hardening-Softening law}
+\subsection{Hardening-softening law}
 
 The hardening-softening law characterizes the dependence of internal variables $\alpha$ during the evolution of plastic deformations. This law is postulated as follows:
 
 \begin{equation} \label{eq_hardening_law}
 	\dot q = \dot \lambda \hl(\stress,q) = - \dot \lambda \dfrac{\partial h}{\partial q}\;,
 \end{equation}
-where $\hl = -\partial h / \partial q$ is a gradient of a potential fucntion $h$ with respect to the associated thermodynamic forces $q$. As the flow function $f$ is dependent on $q$, changing along the plastic deformation will change the position and/or shape of the flow surface. When the flow surface is static, that is, $\dot q = 0$, there is perfect plasticity, when it increases isotropically, there is isotropic hardening-softening and when it moves, there is kinematic hardening-softening, being mixed, when composed of the last two. In this paper, the isotrpoic associated hardening-softening law ($h=f$) is considered. The associated thermodynamic force is given exclusively by the portion that does not depend on the hydrostatic ($I_1$) or deviating ($J_2$) part on the flow surfaces. This force is controlled by the cohesive parameter, so $q(\alpha) =  2\sqrt{k}c(\alpha)$, where the equivalent plastic deformation is the internal variable, i.e., $\alpha = \strainpeq$. For cohesion, it is considered a linear function defined by parts, as Fig.~\ref{choesive parameter}, in order to represent the characteristic hadering-softening of the rock mass.
+where $\hl = -\partial h / \partial q$ is a gradient of a potential fucntion $h$ with respect to the associated thermodynamic forces $q$. As the flow function $f$ is dependent on $q$, the plastic deformation will change the position and/or shape of the flow surface. In this paper, the isotrpoic associated hardening-softening law ($h=f$) is considered. The associated thermodynamic force is given exclusively by the portion that does not depend on the hydrostatic ($I_1$) and deviating ($J_2$) invariants. For Drucker-Prager surface, this force is controlled by the cohesive parameter, i.e. $q(\alpha) =  2\sqrt{k}c(\alpha)$, where the equivalent plastic deformation is the internal variable $\alpha = \strainpeq$. For cohesion, it is considered a linear function defined by parts, as shown in Fig.~\ref{choesive parameter}, to represent the characteristic hadening-softening of the rock mass.
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{FIG1A.pdf}
-	\caption{Linear function defined by parts to represent the hardening/softening through the cohesive parameter and model validation through triaxial testing.}
+	\includegraphics[scale=1]{FIG1.pdf}
+	\caption{Linear function defined by parts to represent the hardening/softening through the cohesive parameter and model validation through triaxial test.}
 	\label{choesive parameter}
 \end{figure}
 
-Therefore, using the chain rule in Eq.~(\ref{eq_hardening_law}) we have 
+Therefore, using the chain rule in Eq.~(\ref{eq_hardening_law}) we obtain the following expression: 
 \begin{equation}
 	\label{eq:expressao_amolecimento}
 	\dot q = - \dot \lambda \dfrac{\partial h}{\partial q} = - \dot \lambda \dfrac{\partial f}{\partial q} = \dot \lambda \left(- \dfrac{\partial f}{\partial q}\dfrac{\partial q}{\partial c}\dfrac{\partial c}{\partial \bar \varepsilon^p}\right) = \dot \lambda \left(2\sqrt{k} \dfrac{\partial c}{\partial \bar \varepsilon^p}\right),	
 \end{equation}
-where
 \begin{equation}
 	\label{eq:dqde}
 	\dfrac{\partial c}{\partial \bar \varepsilon_{p}} = \left\{ \begin{array}{ll} \dfrac{(c_p-c_i)}{\bar \varepsilon^p_I} &  \text{for zone I} \\ 
 		0, & \text{for zone II} \\
 		\dfrac{(c_r-c_p)}{\bar \varepsilon^p_{r}-\bar \varepsilon^p_{II}}, & \text{for zone III} \\	
 		0, & \text{for zone IV}
-	\end{array}\right..
+	\end{array}\right.
 \end{equation}
-
-The equivalent plastic deformation is calculated from the following expression:
+where $c_i$, $c_p$ and $c_r$ is the initial, plateau or peak and residual cohesion, respectively. The equivalent plastic deformation is calculated from the following expression:
 \begin{equation}
 	\label{eq:epsPeq}
 	\dot{{\bar \varepsilon}}^p = C||\dot \strainp||,
@@ -209,7 +206,7 @@ and
 	C = \dfrac{\beta_1+1/\sqrt{3}}{\sqrt{3\beta_1^2+1/2}}.
 \end{equation}
 
-When $\phi = 0$ the rock mass is independent of the hydrostatic pressure $\beta_1 = 0$ and $C = \sqrt{2/3}$.
+When $\phi = 0$ the rock mass is independent of the hydrostatic pressure: $\beta_1 = 0$ and $C = \sqrt{2/3}$.
 
 \subsection{Loading and unloading conditions}
 
@@ -225,14 +222,14 @@ These conditions establish that plastic flow only occurs when the state of stres
 	\dot f = \dfrac{\partial f}{\partial \stress}:\dot \stress + \dfrac{\partial f}{\partial q}\cdot \dot q = \dfds:\dot \sigma + \dfdq \cdot \dot q = 0.
 \end{equation}
 
-\subsection{Plastic multiplier and continuous Elastoplastic Module}
+\subsection{Plastic multiplier and elastoplastic module}
 
-Introducing Eq.~(\ref{eq:consistencia}) to Eq.~(\ref{eq_constitutive_relationship_plastic}) and Eq.~(\ref{eq_hardening_law}), together with Eq.~(\ref{eq_plastic_flow}), and isolating the plastic multiplier, we have:
+Placing Eq.~(\ref{eq_constitutive_relationship_plastic}), Eq.~(\ref{eq_hardening_law}) and Eq.~(\ref{eq_plastic_flow}) into Eq.~(\ref{eq:consistencia}) the follow plastic multiplier writes:
 \begin{equation}
 	\label{eq:lambda}
-	\dot \lambda = \dfrac{\dfds:\Dsdee:\dot \strain}{\dfds:\Dsdee:\dgds-\dfdq \cdot \hl}
+	\dot \lambda = \dfrac{\dfds:\Dsdee:\dot \strain}{\dfds:\Dsdee:\dgds-\dfdq \cdot \hl}.
 \end{equation}
-that introducing in the constitutive relation Eq.~(\ref{eq_constitutive_relationship_plastic}) leads to
+Introducing Eq.~(\ref{eq:lambda}) in the constitutive relation (Eq.~(\ref{eq_constitutive_relationship_plastic})) leads to:
 \begin{equation}
 	\label{eq:Dep}
 	\Dsdep = \Dsdee - \dfrac{\left(\Dsdee:\dgds \right)\otimes\left(\dfds:\Dsdee \right)}{\dfds:\Dsdee:\dgds-\dfdq \cdot \hl}
@@ -245,21 +242,20 @@ where $\otimes$ is the tensorial product.
 
 The viscoplastic constitutive model has a rationale similar to that of elastoplasticity, which leads to the following relationship:
 \begin{equation} \label{eq_constitutive_relationship_viscoplastic}
-	\dstress = \Dsdev : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstraine - \dstrainv)\;
+	\dstress = \Dsdev : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstrain - \dstrainv)\;
 \end{equation}
 where $\Dsdev$ is the viscoplastic fourth order tensor.
 
 \subsection{Flow surface}
 
-Viscoplasticity does not always have an elastic domain, for example, at high temperatures certain materials can always flow under stress, that is, the flow function is zero. For these materials there are explicit functions. However, in problems involving deep tunnels, the phenomenon occurs from a certain level of stress, as described by \citeN{Rousset1988}. For these cases, surfaces $f^{vp}$ similar to those of elastoplasticity are used.
+Viscoplasticity does not always have an elastic domain, for example, at high temperatures certain materials can always flow under stress, that is, the flow function is zero. For these materials there are explicit functions. However, in problems involving deep tunnels, the phenomenon occurs from a certain level of stress, as described by \citeN{Rousset1988}. For these cases, surfaces $f^{vp}$ similar to those of elastoplasticity are used. Here is used the Drucker-Prager viscoplastic flow surface similar to Eq.~(\ref{eq:f_Drucker_Prager}), however, with $\phi^{vp}$ in $\beta_1$ and $\beta_2$, and $q^{vp} = 2\sqrt{k^{vp}}-c^{vp}$ where $k^{vp} = (1+\sin{\phi^{vp}})/(1-\sin{\phi^{vp}})$ and $c^{vp}$ is a constant parameter.
 
-\subsection{Viscoplastic flow rule and hadrening-softening law}
+\subsection{Viscoplastic flow rule and hardening-softening law}
 
 Analogous to elastoplasticity, the viscoplastic flow rule and the hardening-softening law are postulated as follows:
-
 \begin{equation} \label{eq_plastic_flow_rule}
 	\begin{array}{lcl}
-		\strainvp = \dot \lambda^{vp} \dgds^{vp} ~~~ \text{with} ~~~ \dgds = \dfrac{\partial g^{vp}}{\partial \stress}, \\ 
+		\dstrainv = \dot \lambda^{vp} \dgds^{vp} ~~~ \text{with} ~~~ \dgds = \dfrac{\partial g^{vp}}{\partial \stress}, \\ 
 		\dot q^{vp} = \dot \lambda^{vp} \hl(\stress,q^{vp}) = - \dot \lambda^{vp} \dfrac{\partial h^{vp}}{\partial q^{vp}} ~~~\text{and} ~~~ \strainvpeq = \int_{0}^{t} \dot \lambda^{vp} dt  \,.
 	\end{array}
 \end{equation}
@@ -268,35 +264,37 @@ However, in this work , the viscoplasticity is perfect, that is, $\dot q^{vp} = 
 
 \subsection{Viscoplastic multiplier}
 
-Unlike elastoplasticity, viscoplastic deformation occur even when $f^{vp} > 0$, and therefore, the consistency condition is not imposed. Thus, the rate of the viscoplastic multiplier $\lambda^{vp}$ cannot be obtained from a condition like $\dot f^{vp} = 0$ . Therefore, there are models that provide an explicit expression for $\lambda^{vp}$ and in this work Perzyna model \cite{perzyna1966} will be adopted, as described in \citeN{zienkiewicz1974}:
+Unlike elastoplasticity, viscoplastic deformation occur even when $f^{vp} > 0$, and therefore, the consistency condition is not imposed. Thus, the rate of the viscoplastic multiplier $\lambda^{vp}$ cannot be obtained from a condition like $\dot f^{vp} = 0$ . Therefore, there are models that provide an explicit expression for $\lambda^{vp}$ and in this paper Perzyna model \cite{perzyna1966} will be adopted, as described in \citeN{zienkiewicz1974}:
 
 \begin{equation} \label{eq_perzyna_model}
-	\dot \lambda^{vp} = \dfrac{\Phi(\stress,q^{vp})}{\eta}~~~\text{and}~~~\Phi = \left\langle  \dfrac{f(\stress,q^{vp})}{f_0} \right\rangle^n \,
-\end{equation} where $\Phi$ is the overstress function, $\eta$ is the dynamic viscosity constant, $n$ is the dimensionless parameter that gives the form of the power law , $f_0$ a parameter conveniently adopted and $\left\langle * \right\rangle$ is the McCauley function which is null when $* <0$ , that is, viscoplastic flow will only occur when the overstress function is positive.
+	\dot \lambda^{vp} = \dfrac{\Phi(\stress,q^{vp})}{\eta}~~~\text{and}~~~\Phi = \left\langle  \dfrac{f^{vp}(\stress,q^{vp})}{f_0} \right\rangle^n \,
+\end{equation} where $\Phi$ is the overstress function, $\eta$ is the dynamic viscosity constant, $n$ is the dimensionless parameter that gives the form of the power law , $f_0$ a parameter conveniently adopted and $\left\langle * \right\rangle$ is the McCauley function which is null when $* <0$ , i.e. viscoplastic flow will only occur when the overstress function is positive.
 
 \section{Elastoplastic-Viscoplastic constitutive model}
 
-The proposed elastoplastic-viscoplastic model is constructed by the serial association of the constitutive models described above, i.e., $\dstrain = \dstraine + \dstrainp + \dstrainv$, which leads to the following constitutive relationship:
+The proposed elastoplastic-viscoplastic model is given by the serial association of the constitutive models described above, i.e. $\dstrain = \dstraine + \dstrainp + \dstrainv$, which leads to the following constitutive relationship:
 \begin{equation} \label{eq_constitutive_relationship_epvp}
-	\dstress = \Dsdepev : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstraine - \dstrainp - \dstrainv)\;.
+	\dstress = \Dsdepev : \dstrain = \Dsdee : \dstraine = \Dsdee : (\dstrain - \dstrainp - \dstrainv)\;.
 \end{equation}
 
 This association can be seen in the one-dimensional representation of Fig.~\ref{reological_scheme}. An important observation is that the flow surfaces and the internal variables that define the elastoplastic and viscoplastic portion of this model can be different from each other, including the association of their respective potential functions with their flow surfaces.
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{FIG1.pdf}
+	\includegraphics[scale=1]{FIG2.pdf}
 	\caption{Rheological representation of the elastoplastic-viscoplastic model.}
 	\label{reological_scheme}
 \end{figure}
 
+An interesting aspect of this coupled model, using Drucker-Prager criterion for $f$ and $f^{vp}$ with $\phi=\phi^{vp}$, is that cohesions controls the solution regime. If $c \rightarrow \infty$ and $c^{vp} \rightarrow \infty$ the solution is purely elastic. On the other hand, if only $c \rightarrow \infty$ a purely elastoviscoplastic solution is obtained, and if only $c^{vp} \rightarrow \infty$ a purely elastoplastic solution appear.
+
 \section{Algorithm for updating the stress and internal variables}
 
-The algorithms for updating stress and internal variables propose to solve the system of differential equations involving the constitutive relations through some integration scheme (generally Runge-Kutta). The algorithm occurs for each Gauss point of each element during the global equilibrium iterations and, given a known set of $\left\{ \strain_n, \strain_n^p,\stress_n,q_n \right\}$ in the substep $n$ and the increment of total strain $\Delta \strain$ we try to obtain the values of the next substep $\left\{ \strain_{n+1}, \strain_{n+1}^{in},\stress_{n+1},q_{n+1} \right\}$ where $\strain_{n+1}^{in}$ is the inelastic strain (plastic or viscoplastic).
+The algorithms for updating stress and internal variables propose to solve the system of differential equations involving the constitutive relations through some integration scheme (generally Runge-Kutta). The algorithm occurs for each Gauss point of each element during the global equilibrium iterations and, given a known set of $\left\{ \strain_n, \strain_n^{in},\stress_n,q_n \right\}$ in the substep $n$ and the increment of total strain $\Delta \strain$ the values of the next substep $\left\{ \strain_{n+1}, \strain_{n+1}^{in},\stress_{n+1},q_{n+1} \right\}$ where $\strain_{n+1}^{in}$ is the inelastic strain (plastic or viscoplastic).
 
 \subsection{Integration of elastoplastic constitutive equations}
 
-Using the first order Runge-Kutta method we have the following scheme of integration of the constitutive equations:
+Using the first order Runge-Kutta method, the following scheme of integration of the constitutive equations are:
 \begin{equation}
 	\label{eq:esquema_int_constitutiva_ep}
 	\left\{
@@ -309,27 +307,27 @@ Using the first order Runge-Kutta method we have the following scheme of integra
 \end{array}
 \right.
 \end{equation}
-where $\Delta \lambda = \dot\lambda\Delta t$ and $0 \leq \Theta \leq 1$ provides the generalized trapezoidal rule for  plastic flow and the evolution of internal variables. When $\Theta = 0$ we obtain the fully explicit form and when $\Theta = 1$ the fully implicit form. Semi-implicit algorithms adopt $0 \leq \Theta < 1$ or a combination of implicit and explicit of the $\Delta \lambda$, $\dgds$ and $\hl$. 
+where $\Delta \lambda = \dot\lambda\Delta t$ and $0 \leq \Theta \leq 1$ provides the generalized trapezoidal rule for  plastic flow and the evolution of internal variables. When $\Theta = 0$ and $\Theta = 1$ the fully explicit and implicit form are obtained, respectively. Semi-implicit algorithms adopt $0 \leq \Theta < 1$ or a combination of implicit and explicit of the $\Delta \lambda$, $\dgds$ and $\hl$. 
 
 The fully explicit schemes did not satisfy the consistency condition $f_{n+1}=f(\stress_{n+1},q_{n+1})=0$ at the end of the substep, since the plastic multiplier and the flow vectors were calculated with the stress of the previous substep $n$. Currently, completely implicit or semi-implicit algorithms that satisfy $f_{n+1} = 0$ are used and some semi-implicit ones avoid the need to calculate the second order gradients of flow vectors $\dgds$ and $\hl$, but need more equilibrium iterations in relation to the fully implicit scheme. Several integration schemes for elastoplasticity can be found in \citeN{souzaneto2008}, \citeN{belytschko2000} and \citeN{simo1998}. In this work, we use semi-implicit two-step integration scheme, presented in \citeN{belytschko2000}, in which the plastic multiplier is integrated through an implicit scheme and the flow vectors are explicitly integrated.
 
-The integration schemes have two steps: first, the elastic predictor is calculated and, if necessary, the plastic corretor. Defining  $\Delta \strainp_{n+1} \equiv \strainp_{n+1} - \strainp_{n}$, the elastic predictor can be explained from Eq.~(\ref{eq:esquema_int_constitutiva_ep})$_4$ as: 
+The integration schemes have two steps: first, the elastic predictor is calculated and, if necessary, the plastic corretor. Defining  $\Delta \strainp = \strainp_{n+1} - \strainp_{n}$, the elastic predictor can be explained from Eq.~(\ref{eq:esquema_int_constitutiva_ep})$_4$ as: 
 \begin{equation}
 	\label{eq:preditor_elastico}
-	\stress_{n+1} = \Dsdee(\strain_{n+1}-\strain_{n+1}^p) = \Dsdee(\strain_n+\Delta \strain-\strain_{n}^ p-\Delta \strain_{n+1}^p) = \stress_{n+1}^{trial} + \Delta \stress_{n+1}
+	\stress_{n+1} = \Dsdee(\strain_{n+1}-\strain_{n+1}^p) = \Dsdee(\strain_n+\Delta \strain-\strain_{n}^ p-\Delta \strain^p) = \stress_{n+1}^{trial} + \Delta \stress_{n+1}
 \end{equation}
-where $\stress_{n+1}^{trial} = \Dsdee (\strain_n+\Delta \strain-\strain_{n}^ p)$ is the elastic predictor (also known as trial stress). Thus, in the first step, the trial stress is calculated and the flow function $f$  . If  $f<0$  the stress state is in the elastic domain and there is no need to apply the plastic corrector. However, if $f>0$ the stress state is outside the plastically admissible domain and it is necessary to apply the plastic corrector step.
+where $\stress_{n+1}^{trial} = \Dsdee (\strain_n+\Delta \strain-\strain_{n}^ p)$ is the elastic predictor (also known as trial stress). Thus, in the first step, the trial stress is calculated and the correpondent flow function $f$ is tested. If  $f<0$  the stress state is in the elastic domain and there is no need to apply the plastic corrector. However, if $f>0$ the stress state is outside the plastically admissible domain and it is necessary to apply the plastic corrector step.
 
 The plastic corrector is the system solution procedure of the Eq.~(\ref{eq:esquema_int_constitutiva_ep})$_{2,3,5}$ which will determine the increments $\Delta \stress_{n+1}$ and $\Delta q_{n+1}$. When it is not possible to obtain an analytical solution for this system, the Newton-Raphson solution procedure is used, which iterates $k$ times through the space of the stresses and internal variables until the stress state returns on the flow surface. This is why these schemes are also known as return mapping algorithms. Fig.~\ref{ep-algorithm-representation} geometrically illustrates this solution.
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=1]{FIG2.pdf}
+	\includegraphics[scale=1]{FIG3.pdf}
 	\caption{Illustration of the return mapping semi-implicit algorithm with $k$ Newton-Raphson local iterations}
 	\label{ep-algorithm-representation}
 \end{figure}
 
-Therefore, to solve by Newton-Raphson scheme the plastic corrector writes Eq.~(\ref{eq:esquema_int_constitutiva_ep})$_{2,3,5}$ (omitting the index $n+1$):
+Therefore, to solve the plastic corrector using the Newton-Raphson scheme, the Eq.~(\ref{eq:esquema_int_constitutiva_ep})$_{2,3,5}$ are written as (omitting the index $n+1$):
 
 \begin{equation}
 	\label{eq:algoritmo_ep_1}
@@ -342,7 +340,7 @@ Therefore, to solve by Newton-Raphson scheme the plastic corrector writes Eq.~(\
 	\right..
 \end{equation}
 
-Linearizing the Eq.~(\ref{eq:algoritmo_ep_1}) in relation to $\Delta \lambda$, with $\Delta \strainp = - \Dsdee^{-1}\Delta\stress$, we have:
+Linearizing the Eq.~(\ref{eq:algoritmo_ep_1}) in relation to $\Delta \lambda$, with $\Delta \strainp = - \Dsdee^{-1}\Delta\stress$, we obtain:
 
 \begin{equation}
 	\label{eq:algoritmo_ep_2}
@@ -370,7 +368,7 @@ Eq.~(\ref{eq:algoritmo_ep_2}) is a system of three equations with three unkowns:
 		\dgds_n \\
 		\hl_n
 	\end{array}
-	\right\}
+	\right\},
 \end{equation}
 \begin{equation}
 	\label{eq:Ak}
@@ -378,7 +376,7 @@ Eq.~(\ref{eq:algoritmo_ep_2}) is a system of three equations with three unkowns:
 	\begin{bmatrix}
 		\Dsdee & \zerol \\
 		\zerol & -\onell
-	\end{bmatrix}.
+	\end{bmatrix},
 \end{equation}
 \begin{equation}
 	\label{eq:deltalambdak}
@@ -386,28 +384,28 @@ Eq.~(\ref{eq:algoritmo_ep_2}) is a system of three equations with three unkowns:
 		\begin{array}{lcl}
 			\dgds_n \\ 
 			\hl_n
-		\end{array}\right\}}
+		\end{array}\right\}}.
 \end{equation}
 
-Due to this explicit treatment of the flow vectors in Eq.~(\ref{eq:Ak}), $\left[\All \right]$ presents a closed expression involving only the elastic modulus. In addition, as the system Eq.~(\ref{eq:algoritmo_ep_2}) is composed of linear functions in relation to $\Delta \lambda$ the residuals  $\al_k$ and $\bl_k$ will automatically be null, dispensing its verification in the convergence criterion, as given by \citeN{belytschko2000}. 
+Due to this explicit treatment of the flow vectors in Eq.~(\ref{eq:Ak}), $\left[\All \right]$ presents a closed expression involving only the elastic constitutive modulus. In addition, as the system Eq.~(\ref{eq:algoritmo_ep_2}) is composed of linear functions in relation to $\Delta \lambda$ the residuals  $\al_k$ and $\bl_k$ will automatically be null, dispensing its verification in the convergence criterion, as given by \citeN{belytschko2000}. 
 
-After updating the stresses and internal variables, it is possible to update the constitutive module. It is possible to use the tangent modulus consistent with the linearization made during the algorithm for integrating the constitutive laws (that is why this modulus is also known as the algorithmic modulus). Its use increase the convergence rate of equilibrium iterations. Its general expression is defined by:
+After updating the stresses and internal variables, it is possible to update the constitutive module. It is possible to use the tangent modulus consistent with the linearization made during the algorithm for integrating the constitutive laws (that is why this modulus is also known as the algorithmic modulus). Its general expression is defined by:
 \begin{equation}
 	\label{eq:D_alg1}
 	\Dsdee^{alg} = \left(\dfrac{d\stress}{d\strain} \right)_{n+1}.
 \end{equation}
 
-To derive the expression from the $\Dsdee^{alg}$ to resolve Eq.~(\ref{eq:esquema_int_constitutiva_ep}) in to $d\stress/d\strain$ \cite{belytschko2000}. With that, we have, in elastoplasticity, the following relationship (omitting the $n+1$ index): 
+To derive the expression $\Dsdee^{alg}$ we resolve the system of Eq.~(\ref{eq:esquema_int_constitutiva_ep}). In elastoplasticity, the following relationship are (omitting the $n+1$ index) \cite{belytschko2000}: 
 \begin{equation}
 	\label{eq:D_alg_ep}
-	\Dsdee^{alg} = \Dsdee - \dfrac{\Dsdee~\dgds_n~\dfds^T \Dsdee}{\dfds^T\Dsdee~\dgds_i-\dfdq \hl_n}
+	\Dsdee^{alg} = \Dsdee - \dfrac{\Dsdee~\dgds_n~\dfds^T \Dsdee}{\dfds^T\Dsdee~\dgds_n-\dfdq \hl_n}
 \end{equation}
 
-Updating the constitutive modulus requires the assembly of the global stiffness matrix at each global equilibrium iteration, so this update is not always done.
+In unassociated plasticity, the constitutive modulus is not symmetric, and its update leads to a non-symmetric global stiffness matrix, requiring a non-symmetric solver for the global equilibrium iterations. Constitutive module symmetrization techniques, as in \citeN{deb2013}, also can be used. However, the algorithm converges even not updating the constitutive modulus. In our calculations we used this update, however, it is opitional.
 
 \subsection{Integration of viscoplastic constitutive equations}
 
-Different integration algorithms can be found in the literature and some of the most used are in \citeN{belytschko2000}, \citeN{souzaneto2008}, \citeN{huang2009} and \citeN{smith2014}. In the present work, a scheme introduced by \citeN{pierce1984}, known as the Rate Tangent Modulus Method, which used an explicit Euler scheme for all variables, except for $\Delta \lambda^{vp}$ that is integrated according to the generalized trapezoidal rule. So, we have the following scheme:
+Different integration algorithms can be found in the literature and some of the most used are in \citeN{belytschko2000}, \citeN{souzaneto2008}, \citeN{huang2009} and \citeN{smith2014}. In the present work, a scheme introduced by \citeN{pierce1984}, known as the Rate Tangent Modulus Method, which used an explicit Euler scheme for all variables, excepted for $\Delta \lambda^{vp}$ that is integrated according to the generalized trapezoidal rule. So the following scheme is deduced:
 
 \begin{equation}
 	\label{eq:esquema_int_constitutiva_vp}
@@ -421,18 +419,18 @@ Different integration algorithms can be found in the literature and some of the 
 	\end{array}
 	\right..
 \end{equation}
-Linearizing the overstress of Eq.~(\ref{eq_perzyna_model}) we have:
+Linearizing the overstress of Eq.~(\ref{eq_perzyna_model}) the follow expression is obtained:
 \begin{equation}
 	\label{eq:esquema_int_constitutiva_vp1}
 	\Phi_{n+1} = \Phi_n + \dPhidsl_n^T \Delta \stress + \dPhidql_n^T \Delta q^{vp}
 \end{equation}
-where $\dPhidsl = \partial \Phi / \partial \stress$ and $\dPhidql = \partial \Phi / \partial q$. Replacing  Eq.~(\ref{eq:esquema_int_constitutiva_vp1}) in the Eq.~(\ref{eq:esquema_int_constitutiva_vp})$_5$ we obtain:
+where $\dPhidsl = \partial \Phi / \partial \stress$ and $\dPhidql = \partial \Phi / \partial q$. Replacing  Eq.~(\ref{eq:esquema_int_constitutiva_vp1}) into Eq.~(\ref{eq:esquema_int_constitutiva_vp})$_5$ we get:
 
 \begin{equation}
 	\label{eq:esquema_int_constitutiva_vp2}
 	\Delta \lambda = \dfrac{\Delta t}{\eta} \Phi_n + \dfrac{\theta \Delta t}{\eta}(\dPhidsl_n^T \Delta \stress + \dPhidql_n^T \Delta q).
 \end{equation}
-And introducing Eq.~(\ref{eq:esquema_int_constitutiva_vp})$_2$  into Eq.~(\ref{eq:esquema_int_constitutiva_vp})$_4$ and rewriting 
+And placing Eq.~(\ref{eq:esquema_int_constitutiva_vp})$_2$  into Eq.~(\ref{eq:esquema_int_constitutiva_vp})$_4$ and rewriting 
 Eq.~(\ref{eq:esquema_int_constitutiva_vp})$_3$ we obtain:
 \begin{equation}
 	\label{eq:esquema_int_constitutiva_vp3}
@@ -444,7 +442,7 @@ Finally, replacing (\ref{eq:esquema_int_constitutiva_vp3}) in (\ref{eq:esquema_i
 	\Delta \lambda^{vp} = \dfrac{\Phi_n + \Theta \dPhidsl_n^T\Dsdee\Delta\strain}{\dfrac{\eta}{\Delta t} + \Theta (\dPhidsl_n^T\Dsdee~\dgds_n^{vp} - \dPhidql_n^T \hl_n^{vp})}.
 \end{equation}
 
-When $0 < \Theta < 1$ we have a semi-implicit algorithm and when $\Theta = 0$ we have a totally explicit algorithm, with $\Delta \lambda^{vp} = \Delta t \dfrac{\Phi_n}{\eta}$. As can be seen from this deduction, unlike the integration of the constitutive relationship in elastoplasticity, there is no need to solve the system iteratively. And, in addition, all variables are taken from the previous $n$ substep. This fact, as will be seen in the next section, will facilitate the coupling between the viscoplasticity and elastoplasticity algorithm. Furthermore, in this work, for viscoplasticity, hardening-softening laws are not used, simplifying the expression (\ref{eq:esquema_int_constitutiva_vp3}) to:
+When $0 < \Theta < 1$ a semi-implicit algorithm is obtained and when $\Theta = 0$ a totally explicit algorithm, with $\Delta \lambda^{vp} = \Delta t \dfrac{\Phi_n}{\eta}$. As can be seen from this deduction, unlike the integration of the constitutive relationship in elastoplasticity, there is no need to solve the system iteratively. And, in addition, all variables are taken from the previous $n$ substep. This fact, as will be seen in the next section, will facilitate the coupling between the viscoplasticity and elastoplasticity algorithm. Furthermore, in this work, for viscoplasticity, hardening-softening laws are not used, simplifying the expression (\ref{eq:esquema_int_constitutiva_vp3}) to:
 
 \begin{equation}
 	\label{eq:esquema_int_constitutiva_vp5}
@@ -454,7 +452,7 @@ When $0 < \Theta < 1$ we have a semi-implicit algorithm and when $\Theta = 0$ we
 Substituting (\ref{eq:esquema_int_constitutiva_vp5}) into (\ref{eq:esquema_int_constitutiva_vp3})$_1$ scheme gives a closed expression for the stress update:
 \begin{equation}
 	\label{eq:esquema_int_constitutiva_vp6}
-	\Delta \stress = \Dsdee^{alg} \Delta \strain - \boldsymbol p
+	\Delta \stress = \Dsdee^{alg} \Delta \strain - \boldsymbol p,
 \end{equation}
 with
 \begin{equation}
@@ -472,27 +470,29 @@ The integration scheme represented by (\ref{eq:esquema_int_constitutiva_vp})$_5$
 		\dfrac{\eta f_0}{\Phi'}\dfrac{(1+\nu)(1-2\nu)}{E}\dfrac{(3-\sin{\phi})^2}{\frac{3}{4}(1-2\nu)(3-\sin{\phi})^2 + 6(1+\nu)\sin{\phi}^2}
 	\end{array} \right.
 \end{equation}
-where $\phi'= \dfrac{d \phi}{d(f/f0)} = n(f/f0)^{n-1}$. When $\phi = 0$ we have the specific case for the von-Mises surface. This limit is deduced considering the associated viscoplasticity and a fully explicit integration scheme. 
+where $\Phi'= \dfrac{d \Phi}{d(f/f0)} = n(f/f0)^{n-1}$. In the case of the von-Mises surface $\phi = 0$. This limit is deduced considering the associated viscoplasticity and a fully explicit integration scheme. 
 
 \subsection{Integration of elastoplastic-viscoplastic constitutive equations}
 
-As viscoplasticity is integrated through a semi-implicit rule in which all variables are calculated in substep $n$, that is, with the known stress, the viscoplastic strain increment can be directly discounted from the total strain increment in the elastic prediction step of the elastoplasticity algorithm. The algorithm for integrating the elastoplastic-viscoplastic constitutive equations can be seen in the flowchart of Fig.~\ref{integração EPVP}.
-
-\begin{figure}
-	\centering
-	\includegraphics[scale = 1.0]{FIG3.pdf}
-	\caption{\label{integração EPVP}Integration algorithm for elastoplasticity-viscoplasticity (omitting the index $n+1$).}
-\end{figure}
-
-\section{Validation of the model}
-
-As validation, a comparison will be made with the analytical and numerical solution deduced by \cite{piepi1995} for a perfect elastoplastic-viscoplastic model with Tresca’s criterion applied to deep clay rock mass. This analytical solution was chosen because it uses the same association principle as in Fig.~\ref{reological_scheme}. Furthermore, it is considered the same surface for plasticity and viscoplasticity, and their flow vectors are fully associated  $f^p = g^{p} = f^{vp} = g^{vp}$. For this analysis, the Tresca surface was approximated through the Drucker-Prager surface without friction and dilatance angle.
-
-The algorithm was implemented in ANSYS software through the UPF (User Programming Features). The mesh (Fig.~\ref{malhaAXI}) comprises 1222 linear elements of four nodes, two degrees of freedom per node and four integration points. The system size, after applying the boundary conditions is of 7626 equations. The excavation method consisted of the technique of deactivating the elements to be excavated by multiplying the modulus of elasticity by $10^{-16}$ (eliminating its contribution to the stiffness matrix) and making the stresses to zero in the Gauss points during the integration of internal forces. The geometric parameters are in Tab.~\ref{parametros_AXI}.
+As viscoplasticity is integrated through a semi-implicit rule in which all variables are calculated with known stresses (from substep n), the viscoplastic strain increment is calculated first. Subsequently, it is descounted from the total strain increment of the elastic predictor in the elastoplasticity algorithm. This is the correct sequence for the coupling, since elastoplasticity algorithm update the stress state for substep $n+1$ in order to verify the criterion $f_{n+1}=0$. If the plastic strain were calculated before the viscoplastic strain, the criterion $f_{n+1} \ne 0$. The algorithm for integrating the elastoplastic-viscoplastic constitutive equations can be seen in the flowchart of Fig.~\ref{integração EPVP}. This implementation in ANSYS USERMAT subroutine in FORTRAN77 can be found in \citeN{Quevedo2021}.
 
 \begin{figure}
 	\centering
 	\includegraphics[scale = 1.0]{FIG4.pdf}
+	\caption{\label{integração EPVP}Integration algorithm for elastoplasticity-viscoplasticity (omitting the index $n+1$).}
+\end{figure}
+
+In elastoplasticity, time is just a pseudo-parameter to mark the load history and control the incremental solution, but it does not influence the constitutive relationship. In coupled model, elastoplasticity part becomes time-dependent, since as it depends on viscoplasticity.
+
+\section{Validation of the model}
+
+As validation, a comparison will be made with the analytical and numerical solutions deduced by \cite{piepi1995} for a perfect elastoplastic-viscoplastic model with Tresca’s criterion applied to deep clay rock mass. This analytical solution was chosen because it uses the same association principle as in Fig.~\ref{reological_scheme}. Furthermore, it is considered the same surface for plasticity and viscoplasticity, and their flow vectors are fully associated  $f^p = g^{p} = f^{vp} = g^{vp}$. For this analysis, the Tresca surface was approximated through the Drucker-Prager surface without friction and dilatance angle.
+
+The mesh (Fig.~\ref{malhaAXI}) comprises 1222 linear elements of four nodes, two degrees of freedom per node and four integration points. The system size, after applying the boundary conditions is of 7626 equations. The excavation method consisted of the technique of deactivating the elements to be excavated by multiplying the modulus of elasticity by $10^{-16}$ (eliminating its contribution to the stiffness matrix) and making the stresses to zero in the Gauss points during the integration of internal forces. The geometric parameters are in Tab.~\ref{parametros_AXI}. The FEM model in ANSYS APDL script can be found in \citeN{Quevedo2021}.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale = 1.0]{FIG5.pdf}
 	\caption{\label{malhaAXI}Domain, parameters, boundary conditions and the mesh of the axisymmetric numerical model.}
 \end{figure}
 
@@ -545,23 +545,17 @@ The algorithm was implemented in ANSYS software through the UPF (User Programmin
 	\normalsize
 \end{table}
 
-The following constitutive parameters are used: $E=1500$MPa and $2000$MPa, $\nu=0.498$, $c^i=c^p=c^r =4\sqrt{3}/2$MPa, $ c^{vp}=3\sqrt{3}/2$MPa, $\eta = 4 \cdot 10^4$day, $n=1$, $f_0=1$MPa and $p_v=p_h=9$ MPa. The viscous phenomenon evolves over time between excavation steps. This time is calculated as the ratio between the step size of the excavation $L_p$ and the excavation speed $V_p = 10$m/day. After the last excavation the model continues incrementing the time until the deformation increment is in the order of $10^{-8}$. In the latter, it can be noted that the elastoplastic model has greater cohesion than the viscoplastic model. This causes viscoplastic deformations to start even before the solid plasticize. The long-term convergence profile, that is, after the time-deferred effects cease, can be seen in Fig.~\ref{convergence_profile_piepi} and Fig.~\ref{convergence_profile_piepi_with_lining}. There is an excellent agreement between the proposed numerical solution with the analytical and numerical solution given by \citeN{piepi1995}.
-
-\begin{figure}
-	\centering
-	\includegraphics[scale = 1.0]{FIG5.pdf}
-	\caption{\label{convergence_profile_piepi}Verification with Piepi (1995) analytical solution of the model elastoplastic-viscoplastic without lining.}
-\end{figure}
+The following constitutive parameters are used: $E=1500$MPa and $2000$MPa, $\nu=0.498$, $c^i=c^p=c^r =4\sqrt{3}/2$MPa, $ c^{vp}=3\sqrt{3}/2$MPa, $\eta = 4 \cdot 10^4$day, $n=1$, $f_0=1$MPa and $p_v=p_h=9$ MPa. The viscous phenomenon evolves over time between excavation steps. The excavation step time is calculated as the ratio between the step size of the excavation $L_p$ and the excavation speed $V_p = 10$m/day. After the last excavation the model continues incrementing the time until the deformation increment is in the order of $10^{-8}$. Note that the elastoplastic part has greater cohesion than the viscoplastic part. In this way, viscoplastic deformations start even before the solid plasticize. The long-term convergence profile, that is, after the end of viscous effects, can be seen in Fig.~\ref{convergence_profile_piepi}. We can observe an excellent agreement between the numerical solution of this work and the analytical/numerical solutions given by \citeN{piepi1995}.
 
 \begin{figure}
 	\centering
 	\includegraphics[scale = 1.0]{FIG6.pdf}
-	\caption{\label{convergence_profile_piepi_with_lining}Verification with Piepi (1995) numerical solution of the model elastoplastic-viscoplastic with lining.}
+	\caption{\label{convergence_profile_piepi}Verification with Piepi (1995) analytical and numerical solution of the model elastoplastic-viscoplastic.}
 \end{figure}
 
 \section{Parametric analysis, results and discussions}
 
-In this section, a parametric analysis is presented to investigate the influence of this elastoplastic-viscoplastic model on the long-term convergence profile, with and without lining. The rock mass properties are the same as the previous analysis with $E=1500$MPa. A variable lining modulus of $E_{rev} = 3000$MPa to $E_{rev} = 30000$MPa with $\nu_{rev} = 0.3$ and the unsupported distance of $d0 = 0$ and $d0 = 4L_p$ was adopted. Convergence to equilibrium is measured in $y/R_i = 6$. The Fig.~\ref{convergence_lining_module} shown this results togheter with elastic (E), viscoplastic (VP) and elastoplastic (EP) behavior. The rigidity of the lining is calculated by the expression:
+In this section, a parametric analysis is presented to investigate the influence of this elastoplastic-viscoplastic model on the long-term convergence profile, with and without lining. The rock mass properties are the same as the previous analysis with $E=1500$MPa. A variable lining modulus of $E_{rev} = 3000$MPa to $E_{rev} = 30000$MPa with $\nu_{rev} = 0.3$ and the unsupported distance of $d_0 = 0$ and $d_0 = 4L_p$ was adopted. Convergence at equilibrium is measured in $y/R_i = 6$. Fig.~\ref{convergence_lining_module} shows this results with elastic (E), viscoplastic (VP) and elastoplastic (EP) behavior. The stifness of the lining is calculated by the expression:
 \begin{equation}
 	\label{rigidez_revestimento}
 	K_{rev} = \dfrac{E_{rev}}{(1+\nu_{rev})}\dfrac{R_i^2-(R_i-e_{rev})^2}{\left[(1-2\nu_{rev})R_i^2+(R_i-e_{rev})^2)\right]}.
@@ -571,20 +565,28 @@ In this section, a parametric analysis is presented to investigate the influence
 \begin{figure}
 	\centering
 	\includegraphics[scale = 1.0]{FIG7.pdf}
-	\caption{\label{convergence_lining_module}Long-term convergence versus lining modulus of elasticity for an unsupported distance $d0=0$ and $d0=4L_p$.}
+	\caption{\label{convergence_lining_module}Long-term convergence versus lining modulus of elasticity for an unsupported distance $d_0=0$ and $d_0=4L_p$.}
 \end{figure}
 
-When the lining rigidity is high, the model (VP) approaches the (EL). This is because the viscous deformations of the viscoplastic model are resisted by the lining and prevented to apear. The model (EPVP) is close to the model (EP). This is because during excavation and placement of the lining, some plastification occurs, but the viscous deformations of the model (EPVP) are resisted by the lining. Comparing the viscoplastic-elastoplastic model with the viscoplastic model, in the long term, without lining, the (EPVP) had a 52\% higher convergence. With lining applied at $d0=0$ a convergence 23\% greater, and for $d0=4L_p$ 31\% greater. This is a big difference in relation to viscoplastic model that try to estimate the convergence in the long term, but do not consider the plastification of the rock mass in the instantaneous behavior.
+When the lining stifiness is high, the model (VP) approaches the (EL). This is because the viscous deformations of the viscoplastic model are resisted by the lining and prevented to appear. In the other hand, the model (EPVP) approaches the model (EP). This is because during excavation and placement of the lining, some plastification occurs, but the viscous deformations of the model (EPVP) are resisted by the lining. Comparing the elastoplastic-viscoplastic  model with the viscoplastic model, in the long term, without lining, the (EPVP) had a 52\% higher convergence. With lining applied at $d_0=0$ a convergence of 23\% greater appears, and for $d_0=4L_p$ it is about 31\%. This is a big difference in relation to viscoplastic model that try to estimate the convergence in the long term, but do not consider the plastification of the rock mass in the instantaneous behavior.
+
+The Fig.~\ref{unassociated_plasticity} shows the effect of using unassociated plasticity on the convergence profile (at end of excavation and long-term) without lining. For the parameters used in our calculation a little difference is observed between unassociated and associated plasticity. More parametric studies are needed considering this aspect.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale = 1.0]{FIG8.pdf}
+	\caption{\label{unassociated_plasticity}Comparison with associated and unassociated plasticity on the convergence profile (at end of excavation and long-term) without lining.}
+\end{figure}
 
 \section{Conclusions}
 
-This work presented a numerical integration scheme for the elastoplastic-viscoplastic constitutive behavior. A brief bibliographic review of each model was carried out separately and its coupling afterwards. The numerical solution of the model was verified with the analytical and numerical solution obtained by \citeN {piepi1995} under axisymmetric conditions, demonstrating an excellent agreement.
+This work have presented a numerical integration scheme for the elastoplastic-viscoplastic constitutive behavior. A brief review of each model was performed separately and then their coupling. The numerical solution of the model was verified with the analytical and numerical solution obtained by \citeN {piepi1995} under axisymmetric conditions, demonstrating an excellent agreement. 
 
-Finally, a parametric analysis was performed to show the importance that this model can have, in the long-term convergence profile, against models that do not consider the instantaneous elastoplastic behavior together with the viscous behavior. For the considered properties, differences in the order of 23\% to 52\% were found.
+Finally, a parametric analysis was performed to show the importance of this model in the long-term convergence profile comparing with anotheres models that don't consider the instantaneous elastoplastic-viscoplastic behavior. For the considered properties, differences about of 23\% to 52\% were founded.
 
 \section{Data Availability Statement}
 
-Some or all data, models, or code that support the findings of this study are available from the corresponding author upon reasonable request. (ANSYS APDL script for FEM model and USERMAT subroutine in FORTRAN90 for constitutive rock mass model)
+Some or all data, models, or code that support the findings of this study are available from the corresponding author upon reasonable request. (ANSYS APDL script for FEM model and USERMAT subroutine in FORTRAN77 for constitutive rock mass model)
 
 \pagebreak
 %

@@ -583,18 +583,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.92795614"
-     inkscape:cx="310.63179"
-     inkscape:cy="61.729815"
+     inkscape:zoom="1.0150321"
+     inkscape:cx="376.23291"
+     inkscape:cy="160.53978"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3884"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="958"
-     inkscape:window-height="1008"
-     inkscape:window-x="-7"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata2903">
     <rdf:RDF>
@@ -1073,13 +1073,14 @@
       </g>
       <g
          clip-path="url(#clip42)"
-         id="g3816">
+         id="g3816"
+         transform="translate(-2)">
         <text
            font-family="'Times New Roman', 'Times New Roman_MSFontService', sans-serif"
            font-weight="700"
            font-size="16px"
            transform="translate(394.272,359)"
-           id="text3814">ASSOCIATED AND UNASSOCIATED PLASTICITY</text>
+           id="text3814">ASSOCIATED AND NON-ASSOCIATED PLASTICITY</text>
       </g>
       <g
          clip-path="url(#clip43)"

@@ -1,7 +1,7 @@
 \begin{figure}
 \centering
 \includegraphics[scale=1]{FIG1.pdf}
-\caption{Linear function defined by parts to represent the hardening/softening through the cohesive parameter and model validation through triaxial test.}
+\caption{a) Picewise linear function adopted for the cohesion defining the hardening/softening and b) model validation against triaxial test results.}
 \label{choesive parameter}
 \end{figure}
 \efloatseparator
@@ -53,5 +53,5 @@
 \begin{figure}
 \centering
 \includegraphics[scale = 1.0]{FIG8.pdf}
-\caption{\label{unassociated_plasticity}Comparison with associated and unassociated plasticity on the convergence profile (at end of excavation and long-term) without lining.}
+\caption{\label{unassociated_plasticity}Comparison with associated and non-associated plasticity on the convergence profile (at end of excavation and long-term) without lining.}
 \end{figure}

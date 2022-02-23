@@ -13,7 +13,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="convergence_lining_module.svg">
+   sodipodi:docname="FIG7.svg">
   <defs
      id="defs2">
     <clipPath
@@ -1527,11 +1527,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3421804"
-     inkscape:cx="340.76075"
-     inkscape:cy="296.52758"
+     inkscape:zoom="1.3007727"
+     inkscape:cx="394.8737"
+     inkscape:cy="218.36854"
      inkscape:document-units="mm"
-     inkscape:current-layer="g1627"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
@@ -2226,7 +2226,15 @@
            font-weight="700"
            font-size="16px"
            transform="translate(926.866,905)"
-           id="text1552">D0 = 0Lp</text>
+           id="text1552"><tspan
+             style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Times New Roman', 'Times New Roman_MSFontService', sans-serif;-inkscape-font-specification:'Times New Roman, Times New Roman_MSFontService, sans-serif Bold Italic'"
+             id="tspan1500">d<tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:65%;font-family:'Times New Roman', 'Times New Roman_MSFontService', sans-serif;-inkscape-font-specification:'Times New Roman, Times New Roman_MSFontService, sans-serif Bold';baseline-shift:sub"
+   id="tspan1502">0</tspan> = <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Times New Roman', 'Times New Roman_MSFontService', sans-serif;-inkscape-font-specification:'Times New Roman, Times New Roman_MSFontService, sans-serif Bold'"
+   id="tspan1518">0</tspan>L<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan1510">p</tspan></tspan></text>
       </g>
       <g
          clip-path="url(#clip64)"
@@ -3130,7 +3138,15 @@
            font-weight="700"
            font-size="16px"
            transform="translate(423.34,916)"
-           id="text1573">D0 = 4Lp</text>
+           id="text1573"><tspan
+             style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Times New Roman', 'Times New Roman_MSFontService', sans-serif;-inkscape-font-specification:'Times New Roman, Times New Roman_MSFontService, sans-serif Bold Italic'"
+             id="tspan1520">d<tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:65%;font-family:'Times New Roman', 'Times New Roman_MSFontService', sans-serif;-inkscape-font-specification:'Times New Roman, Times New Roman_MSFontService, sans-serif Bold';baseline-shift:sub"
+   id="tspan1522">0</tspan> = <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Times New Roman', 'Times New Roman_MSFontService', sans-serif;-inkscape-font-specification:'Times New Roman, Times New Roman_MSFontService, sans-serif Bold'"
+   id="tspan1528">4</tspan>L<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan1526">p</tspan></tspan></text>
       </g>
       <g
          clip-path="url(#clip66-5)"

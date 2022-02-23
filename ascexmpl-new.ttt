@@ -38,9 +38,9 @@ Elements in lining thickness & $n_{rev}$ & un & 2 \\
 Elements along $R_1$ & $nR_{1}$ & un & 15 \\ 
 First and last element ration of $R_1$ & $mR_{1}$ & adm & 15 \\ 
 Elements along $L_{x_1}$ & $nL_{x_1}$ & un & 5 \\
-First and last element ration of $L_{x_1}$ & $mL_{x_1}$ & adm & 5 \\ 
-Element size in excavated part & $L_{p_e}$ & m & $L_{p}$ \\ 
-Number of elements along $L_{y_2}$ & $nL_{y_2}$ & un & 8 \\ 
+First and last element ration of $L_{x_1}$ & $mL_{x_1}$ & adm & 1.2 \\ 
+Elements in excavated step & $nL_{p}$ & un & 1 \\ 
+Number of elements along $L_{y_2}$ & $nL_{y_2}$ & un & 15 \\ 
 First and last element ratio of $L_{y_2}$ & $mL_{y_2}$ & adm & 5 \\ 
 \hline
 \end{tabular}

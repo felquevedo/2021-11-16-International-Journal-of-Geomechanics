@@ -173,7 +173,7 @@ where $\hl = -\partial h / \partial q$ is a gradient of a potential fucntion $h$
 \begin{figure}
 	\centering
 	\includegraphics[scale=1]{FIG1.pdf}
-	\caption{a) Picewise linear function adopted for the cohesion defining the hardening/softening and b) model validation against triaxial test results.}
+	\caption{a) Piecewise linear function adopted for the cohesion defining the hardening/softening and b) model validation against triaxial test results.}
 	\label{choesive parameter}
 \end{figure}
 
@@ -502,7 +502,7 @@ Before proceeding to the model validation, it is emphasized that the momentum ba
 
 As validation, a comparison will be made with the analytical and numerical solutions deduced by \cite{piepi1995} for a perfect elastoplastic-viscoplastic model with Tresca’s criterion applied to deep clay rock mass. This analytical solution was chosen because it uses the same association principle as in Fig.~\ref{reological_scheme}. Furthermore, it is considered the same surface for plasticity and viscoplasticity, and their flow vectors are fully associated  $f^p = g^{p} = f^{vp} = g^{vp}$. For this analysis, the Tresca surface was approximated through the Drucker-Prager surface without friction and dilatance angle.
 
-The mesh (Fig.~\ref{malhaAXI}) comprises 1222 linear elements of four nodes, two degrees of freedom per node and four integration points. The system size, after applying the boundary conditions is of 7626 equations. The excavation method consisted of the technique of deactivating the elements to be excavated by multiplying the modulus of elasticity by $10^{-16}$ (eliminating its contribution to the stiffness matrix) and making the stresses to zero in the Gauss points during the integration of internal forces. The geometric parameters are in Tab.~\ref{parametros_AXI}. The FEM model in ANSYS APDL script can be found in \citeN{Quevedo2021}.
+The mesh (Fig.~\ref{malhaAXI}) comprises 1431 linear elements of four nodes, two degrees of freedom per node and four integration points. The system size, after applying the boundary conditions is of 3024 equations. The excavation method consisted of the technique of deactivating the elements to be excavated by multiplying the modulus of elasticity by $10^{-16}$ (eliminating its contribution to the stiffness matrix) and making the stresses to zero in the Gauss points during the integration of internal forces. The geometric parameters are in Tab.~\ref{parametros_AXI}. The FEM model in ANSYS APDL script can be found in \citeN{Quevedo2021}.
 
 \begin{figure}
 	\centering
@@ -550,9 +550,9 @@ The mesh (Fig.~\ref{malhaAXI}) comprises 1222 linear elements of four nodes, two
 		Elements along $R_1$ & $nR_{1}$ & un & 15 \\	
 		First and last element ration of $R_1$ & $mR_{1}$ & adm & 15 \\	
 		Elements along $L_{x_1}$ & $nL_{x_1}$ & un & 5 \\
-		First and last element ration of $L_{x_1}$ & $mL_{x_1}$ & adm & 5 \\				
-		Element size in excavated part & $L_{p_e}$ & m & $L_{p}$ \\	
-		Number of elements along $L_{y_2}$ & $nL_{y_2}$ & un & 8 \\			
+		First and last element ration of $L_{x_1}$ & $mL_{x_1}$ & adm & 1.2 \\				
+		Elements in excavated step & $nL_{p}$ & un & 1 \\	
+		Number of elements along $L_{y_2}$ & $nL_{y_2}$ & un & 15 \\			
 		First and last element ratio of $L_{y_2}$ & $mL_{y_2}$ & adm & 5 \\				
 		\hline
 	\end{tabular}

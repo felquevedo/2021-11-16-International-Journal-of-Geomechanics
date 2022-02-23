@@ -1,7 +1,7 @@
 \begin{figure}
 \centering
 \includegraphics[scale=1]{FIG1.pdf}
-\caption{a) Picewise linear function adopted for the cohesion defining the hardening/softening and b) model validation against triaxial test results.}
+\caption{a) Piecewise linear function adopted for the cohesion defining the hardening/softening and b) model validation against triaxial test results.}
 \label{choesive parameter}
 \end{figure}
 \efloatseparator
